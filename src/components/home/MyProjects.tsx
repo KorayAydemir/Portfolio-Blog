@@ -2,7 +2,7 @@ import Typewriter from "typewriter-effect";
 import { MySetup, Portfolio, Tailwind } from "@public/images/index";
 import { useGlitch } from "react-powerglitch";
 import Project from "./Project";
-import { SiTailwindcss, SiTypescript } from "react-icons/si"
+import { SiArchlinux, SiGnubash, SiNeovim, SiShell, SiTailwindcss, SiTypescript } from "react-icons/si"
 import { TbBrandNextjs } from "react-icons/tb"
 import { TbBrandTailwind } from "react-icons/tb"
 import { FaRust } from "react-icons/fa"
@@ -36,12 +36,9 @@ export default function MyProjects() {
           img={Portfolio}
           alt="portfolio"
           fields={[
-            { name: "NextJS", Icon: TbBrandNextjs, className: "text-black" },
+            { name: "NextJS", Icon: TbBrandNextjs, className: "" },
             { name: "TypeScript", Icon: SiTypescript, className: "" },
             { name: "Tailwind", Icon: SiTailwindcss, className: "" },
-            { name: "TypeScript", Icon: SiTypescript, className: "" },
-            { name: "TypeScript", Icon: SiTypescript, className: "" },
-            { name: "TypeScript", Icon: SiTypescript, className: "" },
           ]}
         />
 
@@ -49,9 +46,9 @@ export default function MyProjects() {
           img={MySetup}
           alt="my setup"
           fields={[
-            { name: "Rust", Icon: FaRust, className: "" },
-            { name: "Rust", Icon: FaRust, className: "" },
-            { name: "Rust", Icon: FaRust, className: "" }
+            { name: "Shell script", Icon: SiGnubash, className: "" },
+            { name: "Arch", Icon: SiArchlinux, className: "" },
+            { name: "Neovim", Icon: SiNeovim, className: "" }
           ]}
         />
       </div>
