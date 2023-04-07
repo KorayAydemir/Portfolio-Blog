@@ -1,8 +1,11 @@
-import Image from "next/image";
 import Typewriter from "typewriter-effect";
-import { MySetup, Portfolio, Rust } from "@public/images/index";
+import { MySetup, Portfolio, Tailwind } from "@public/images/index";
 import { useGlitch } from "react-powerglitch";
 import Project from "./Project";
+import { SiTailwindcss, SiTypescript } from "react-icons/si"
+import { TbBrandNextjs } from "react-icons/tb"
+import { TbBrandTailwind } from "react-icons/tb"
+import { FaRust } from "react-icons/fa"
 
 export default function MyProjects() {
   const manualGlitch = useGlitch({
@@ -30,20 +33,25 @@ export default function MyProjects() {
 
       <div className="space-y-8">
         <Project
-          img={MySetup}
-          alt="my setup"
+          img={Portfolio}
+          alt="portfolio"
           fields={[
-            ["NextJS", Portfolio],
-            ["Rust", Rust],
+            { name: "NextJS", Icon: TbBrandNextjs, className: "text-black" },
+            { name: "TypeScript", Icon: SiTypescript, className: "" },
+            { name: "Tailwind", Icon: SiTailwindcss, className: "" },
+            { name: "TypeScript", Icon: SiTypescript, className: "" },
+            { name: "TypeScript", Icon: SiTypescript, className: "" },
+            { name: "TypeScript", Icon: SiTypescript, className: "" },
           ]}
         />
 
         <Project
-          img={Portfolio}
-          alt="portfolio"
+          img={MySetup}
+          alt="my setup"
           fields={[
-            ["NextJS", Portfolio],
-            ["Rust", Rust],
+            { name: "Rust", Icon: FaRust, className: "" },
+            { name: "Rust", Icon: FaRust, className: "" },
+            { name: "Rust", Icon: FaRust, className: "" }
           ]}
         />
       </div>

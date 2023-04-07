@@ -1,10 +1,11 @@
 import Image, { StaticImageData } from "next/image";
+import { IconType } from "react-icons";
 import { useGlitch } from "react-powerglitch";
 
 interface Props {
   img: StaticImageData;
   alt: string;
-  fields: [string, StaticImageData][];
+  fields: { name: string, Icon: IconType, className: string }[]
 }
 
 export default function Project(props: Props) {
@@ -22,14 +23,17 @@ export default function Project(props: Props) {
     },
   });
 
-  const fields = props.fields.map((field, i) => (
-    <div
+  const fields = props.fields.map((field, i) => {
+    const { name, Icon, className } = field;
+    return (<div
       key={i}
-      className="text-center grow border-solid rounded border-2 dark:border-gray-200 border-gray-800 px-1"
+      className="px-3 py-0.5 flex-1 flex border-solid rounded border-2 dark:border-slate-400 border-gray-800 px-1 text-center"
     >
-      <span className="font-bold">{field[0]}</span>
+      <Icon className="block my-auto " />
+      <span className="font-bold text-base ml-1.5"> {name}</span>
     </div>
-  ));
+    )
+  });
 
   return (
     <div>
@@ -41,7 +45,7 @@ export default function Project(props: Props) {
         className="rounded-lg"
       />
 
-      <div className="flex space-x-2 mt-4">{fields}</div>
+      <div className="flex flex-wrap gap-2 mt-4" flex-wrap>{fields}</div>
     </div>
   );
 }
