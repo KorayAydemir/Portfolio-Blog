@@ -3,7 +3,6 @@ import Layout from "@component/components/shared/layout";
 import Head from "next/head";
 import { useState } from "react";
 import Typewriter from "typewriter-effect";
-import { useGlitch } from "react-powerglitch";
 
 export default function Home() {
   let desc =
@@ -15,7 +14,6 @@ export default function Home() {
 
   const myProjects = showMyProjects ? <MyProjects /> : null;
 
-  const glitch = useGlitch({ playMode: 'always' });
 
   return (
     <>
@@ -57,7 +55,6 @@ export default function Home() {
 
           <h3 className="mt-4 text-xl">{myProjects}</h3>
 
-          <div>react powerglitch <span ref={glitch.ref}>yoooo</span></div>
         </section>
       </Layout>
     </>

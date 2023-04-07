@@ -1,36 +1,52 @@
 import Image from "next/image";
-import { useState } from "react";
 import Typewriter from "typewriter-effect";
-import { MySetup, Portfolio, Rust, DownScaled } from '@public/images/index';
+import { MySetup, Portfolio, Rust } from "@public/images/index";
 import { useGlitch } from "react-powerglitch";
-
-
+import Project from "./Project";
 
 export default function MyProjects() {
-  const [imageIsLoaded, setImageIsLoaded] = useState(false)
-  const glitch = useGlitch({ playMode: 'hover' });
+  const manualGlitch = useGlitch({
+    playMode: "hover",
+    timing: { duration: 400 },
+    glitchTimeSpan: false,
+    shake: false,
+  });
+
   return (
     <div>
-      <Typewriter
-        onInit={(typewriter) => {
-          typewriter
-            .changeDelay(30)
-            .typeString("My Projects:")
-            .callFunction((state) => {
-              state.elements.cursor.remove();
-            })
-            .start();
-        }}
-      />
+      <h3 className="mb-4 font-bold ">
+        <Typewriter
+          onInit={(typewriter) => {
+            typewriter
+              .changeDelay(30)
+              .typeString("My Projects")
+              .callFunction((state) => {
+                state.elements.cursor.remove();
+              })
+              .start();
+          }}
+        />
+      </h3>
 
-      {!imageIsLoaded && <Image src={DownScaled} loading="eager" alt="mysetup" />}
-      <Image quality={100} onLoad={event => {
-        console.log(event.target)
-        setImageIsLoaded(true)
-      }} placeholder="blur" ref={glitch.ref} loading="eager" src={MySetup} alt="dots" />
+      <div className="space-y-8">
+        <Project
+          img={MySetup}
+          alt="my setup"
+          fields={[
+            ["NextJS", Portfolio],
+            ["Rust", Rust],
+          ]}
+        />
 
-      <Image quality={50} ref={glitch.ref} loading="eager" src={Portfolio} alt="portfolio" />
-      <Image ref={glitch.ref} loading="eager" src={Rust} alt="rust" />
+        <Project
+          img={Portfolio}
+          alt="portfolio"
+          fields={[
+            ["NextJS", Portfolio],
+            ["Rust", Rust],
+          ]}
+        />
+      </div>
     </div>
   );
 }
