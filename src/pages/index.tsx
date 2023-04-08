@@ -9,12 +9,11 @@ export default function Home() {
   let desc =
     "Hi, my name is Koray. I'm a software engineer based in Istanbul/Türkiye.";
   let h1 = "Full-stack web developer, ";
-  let h1p2 = "linux hobbyist"
+  let h1p2 = "linux hobbyist";
 
   // show projects when text loads
   const [showMyProjects, setShowMyProjects] = useState(false);
   const myProjects = showMyProjects ? <MyProjects /> : null;
-
 
   return (
     <>
@@ -23,26 +22,38 @@ export default function Home() {
         <meta name="description" content={desc} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <noscript>
+          <link rel="stylesheet" type="text/css" href="/noscript.css" />
+        </noscript>
       </Head>
       <div className="flex justify-end mt-4 mr-4">
         <ToggleTheme />
       </div>
 
       <Layout>
-        <noscript><h1>{h1}{h1p2}</h1>
+        <noscript>
+          <h1>
+            {h1}
+            {h1p2}
+          </h1>
           <h2>{desc}</h2>
           <MyProjects />
-          <style dangerouslySetInnerHTML={{ __html: "body{ background-color:black !important;} span{color:white !important}" }}></style>
         </noscript>
         <section className="flex flex-col">
           <h1 className="text-center font-bold text-2xl">
             <Typewriter
               onInit={(typewriter) => {
-                typewriter.changeDelay(18).typeString(h1).pauseFor(580).typeString(h1p2).start();
+                typewriter
+                  .changeDelay(18)
+                  .typeString(h1)
+                  .pauseFor(580)
+                  .typeString(h1p2)
+                  .start();
               }}
               options={{
                 cursor: "T",
-                cursorClassName: "bg-neutral-900 text-neutral-900 dark:bg-white dark:text-white Typewriter__cursor",
+                cursorClassName:
+                  "bg-neutral-900 text-neutral-900 dark:bg-white dark:text-white Typewriter__cursor",
               }}
             />
           </h1>
@@ -58,14 +69,17 @@ export default function Home() {
                   })
                   .start();
               }}
-              options={{ cursor: '', cursorClassName: "p-[0.6px] bg-neutral-900 text-neutral-900 dark:bg-white dark:text-white Typewriter__cursor" }}
+              options={{
+                cursor: "",
+                cursorClassName:
+                  "p-[0.6px] bg-neutral-900 text-neutral-900 dark:bg-white dark:text-white Typewriter__cursor",
+              }}
             />
           </h2>
 
           <h3 className="mt-4 text-xl">{myProjects}</h3>
-
         </section>
-      </Layout >
+      </Layout>
     </>
   );
 }
