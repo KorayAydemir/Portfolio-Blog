@@ -1,11 +1,12 @@
 import Image, { StaticImageData } from "next/image";
 import { IconType } from "react-icons";
 import { useGlitch } from "react-powerglitch";
+import { LinkOrDiv } from "../shared/LinkOrDiv";
 
 interface Props {
   img: StaticImageData;
   alt: string;
-  fields: { name: string, Icon: IconType, className: string }[]
+  fields: { name: string, Icon: IconType, link?: string }[]
 }
 
 export default function Project(props: Props) {
@@ -23,15 +24,14 @@ export default function Project(props: Props) {
     },
   });
 
+
   const fields = props.fields.map((field, i) => {
-    const { name, Icon, className } = field;
-    return (<div
-      key={i}
-      className="px-3 py-0.5 flex-1 flex border-solid rounded border-2 dark:border-slate-400 border-gray-800 px-1 text-center"
-    >
-      <Icon className="block my-auto " />
-      <span className="font-bold text-base ml-1.5"> {name}</span>
-    </div>
+    const { name, Icon, link } = field;
+    return (
+      <LinkOrDiv href={link} className="px-3 py-0.5 flex-1 flex border-solid rounded border-2 dark:border-slate-400 border-gray-800 px-1 text-center" key={i}>
+        <Icon className="block my-auto " />
+        <span className="font-bold text-base ml-1.5">{name}</span>
+      </LinkOrDiv>
     )
   });
 
@@ -45,7 +45,7 @@ export default function Project(props: Props) {
         className="rounded-lg animate-slowfadein"
       />
 
-      <div className="flex flex-wrap gap-2 mt-4" flex-wrap>{fields}</div>
+      <div className="flex flex-wrap gap-2 mt-4">{fields}</div>
     </div>
   );
 }

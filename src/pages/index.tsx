@@ -32,12 +32,14 @@ export default function Home() {
 
       <Layout>
         <noscript>
-          <h1>
+          <h1 className="text-center font-bold text-2xl">
             {h1}
             {h1p2}
           </h1>
-          <h2>{desc}</h2>
-          <MyProjects />
+
+          <h2 className="mt-4 text-center text-xl">{desc}</h2>
+          <h3 className="mt-4 text-xl"><MyProjects /></h3>
+
         </noscript>
         <section className="flex flex-col">
           <h1 className="text-center font-bold text-2xl">
