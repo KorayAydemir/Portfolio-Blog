@@ -42,7 +42,7 @@ export default function Project(props: Props) {
         loading="eager"
         src={props.img}
         alt={props.alt}
-        className="rounded-lg animate-slowfadein"
+        className="w-[1200px] rounded-lg animate-slowfadein"
       />
 
       <div className="flex flex-wrap gap-2 mt-4">{fields}</div>
