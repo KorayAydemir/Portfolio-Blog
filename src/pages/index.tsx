@@ -1,4 +1,5 @@
 import MyProjects from "@component/components/home/MyProjects";
+import ToggleTheme from "@component/components/shared/ToggleTheme";
 import Layout from "@component/components/shared/layout";
 import Head from "next/head";
 import { useState } from "react";
@@ -23,11 +24,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className="flex justify-end mt-4 mr-4">
+        <ToggleTheme />
+      </div>
 
       <Layout>
         <noscript><h1>{h1}{h1p2}</h1>
           <h2>{desc}</h2>
           <MyProjects />
+          <style dangerouslySetInnerHTML={{ __html: "body{ background-color:black; color:white;}" }}></style>
         </noscript>
         <section className="flex flex-col">
           <h1 className="text-center font-bold text-2xl">
