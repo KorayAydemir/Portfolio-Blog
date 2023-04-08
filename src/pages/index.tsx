@@ -32,7 +32,7 @@ export default function Home() {
         <noscript><h1>{h1}{h1p2}</h1>
           <h2>{desc}</h2>
           <MyProjects />
-          <style dangerouslySetInnerHTML={{ __html: "body{ background-color:black; color:white;}" }}></style>
+          <style dangerouslySetInnerHTML={{ __html: "body{ background-color:black !important;} span{color:white !important}" }}></style>
         </noscript>
         <section className="flex flex-col">
           <h1 className="text-center font-bold text-2xl">
