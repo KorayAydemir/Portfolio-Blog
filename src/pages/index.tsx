@@ -10,8 +10,8 @@ export default function Home() {
   let h1 = "Full-stack web developer, ";
   let h1p2 = "linux hobbyist"
 
+  // show projects when text loads
   const [showMyProjects, setShowMyProjects] = useState(false);
-
   const myProjects = showMyProjects ? <MyProjects /> : null;
 
 
@@ -25,6 +25,10 @@ export default function Home() {
       </Head>
 
       <Layout>
+        <noscript><h1>{h1}{h1p2}</h1>
+          <h2>{desc}</h2>
+          <MyProjects />
+        </noscript>
         <section className="flex flex-col">
           <h1 className="text-center font-bold text-2xl">
             <Typewriter
@@ -56,7 +60,7 @@ export default function Home() {
           <h3 className="mt-4 text-xl">{myProjects}</h3>
 
         </section>
-      </Layout>
+      </Layout >
     </>
   );
 }

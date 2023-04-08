@@ -2,10 +2,9 @@ import Typewriter from "typewriter-effect";
 import { MySetup, Portfolio, Tailwind } from "@public/images/index";
 import { useGlitch } from "react-powerglitch";
 import Project from "./Project";
-import { SiArchlinux, SiGnubash, SiNeovim, SiShell, SiTailwindcss, SiTypescript } from "react-icons/si"
+import { SiArchlinux, SiGnubash, SiNeovim, SiTailwindcss, SiTypescript } from "react-icons/si"
 import { TbBrandNextjs } from "react-icons/tb"
-import { TbBrandTailwind } from "react-icons/tb"
-import { FaRust } from "react-icons/fa"
+import { FaGithub } from "react-icons/fa"
 
 export default function MyProjects() {
   const manualGlitch = useGlitch({
@@ -39,6 +38,7 @@ export default function MyProjects() {
             { name: "NextJS", Icon: TbBrandNextjs, className: "" },
             { name: "TypeScript", Icon: SiTypescript, className: "" },
             { name: "Tailwind", Icon: SiTailwindcss, className: "" },
+            { name: "Github", Icon: FaGithub, className: "" },
           ]}
         />
 
@@ -48,7 +48,8 @@ export default function MyProjects() {
           fields={[
             { name: "Shell script", Icon: SiGnubash, className: "" },
             { name: "Arch", Icon: SiArchlinux, className: "" },
-            { name: "Neovim", Icon: SiNeovim, className: "" }
+            { name: "Neovim", Icon: SiNeovim, className: "" },
+            { name: "Github", Icon: FaGithub, className: "" },
           ]}
         />
       </div>
