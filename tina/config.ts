@@ -38,6 +38,18 @@ export default defineConfig({
             label: "Body",
             isBody: true,
           },
+          {
+            label: 'Tags',
+            name: 'tags',
+            type: 'string',
+            list: true,
+          },
+          {
+            type: "datetime",
+            name: "date",
+            label: "Date",
+            isTitle: true,
+          },
         ],
         ui: {
           // This is an DEMO router. You can remove this to fit your site

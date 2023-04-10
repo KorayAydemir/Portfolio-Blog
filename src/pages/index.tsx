@@ -26,8 +26,30 @@ import { VscTerminalBash } from "react-icons/vsc";
 import { Skill } from "@component/components/home/Skill";
 import Contact from "@component/components/home/Contact";
 import Link from "next/link";
+import { useTina } from "tinacms/dist/react";
+import { client } from "../../tina/__generated__/client"
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const { data, query, variables } = await client.queries.post({
+    relativePath: "hello-world.md"
+  })
+  return {
+    props: {
+      data, query, variables
+    }
+  }
+}
+
+export default function Home(props: any) {
+
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
+
+  const content = data.post.body;
+
   let desc =
     "Hi, my name is Koray. I'm a software engineer based in Istanbul/Türkiye.";
   let h1 = "Full-stack web developer, ";
