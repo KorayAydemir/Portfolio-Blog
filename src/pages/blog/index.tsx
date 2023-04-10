@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function test() {
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
@@ -32,26 +34,26 @@ export default function test() {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                          <a className="text-gray-900 dark:text-gray-100" href="/blog/new-features-in-v1">
-                            How I used TinaCMS to give my blog superpowers</a>
+                          <Link className="text-gray-900 dark:text-gray-100" href="/blog/post">
+                            How I used TinaCMS to give my blog superpowers</Link>
                         </h2>
                         <div className="flex flex-wrap">
-                          <a className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/next-js">
-                            next-js</a>
-                          <a className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/tailwind">
-                            tailwind</a>
-                          <a className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/tailwind">
-                            tinacms</a>
-                          <a className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/guide">
-                            guide</a>
+                          <span className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
+                            next-js</span>
+                          <span className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
+                            tailwind</span>
+                          <span className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
+                            tinacms</span>
+                          <span className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
+                            guide</span>
                         </div>
                       </div>
                       <div className="prose max-w-none text-gray-500 dark:text-gray-400">
                         An overview of how I used TinaCMS, a WSIWYG editor, to manage my blog from anywhere. And the roadblocks I have encountered.</div>
                     </div>
                     <div className="text-base font-medium leading-6">
-                      <a className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;New features in v1&quot;" href="/blog/new-features-in-v1">
-                        Read more →</a>
+                      <Link className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;New features in v1&quot;" href="/blog/post">
+                        Read more →</Link>
                     </div>
                   </div>
                 </div>
@@ -60,8 +62,8 @@ export default function test() {
           </ul>
         </div>
         <div className="flex justify-end text-base font-medium leading-6">
-          <a className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="all posts" href="/blog">
-            All Posts →</a>
+          <span className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="all posts">
+            All Posts →</span>
         </div>
         <div className="flex items-center justify-center pt-4">
           <div>
