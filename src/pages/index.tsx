@@ -3,7 +3,43 @@ import ToggleTheme from "@component/components/shared/ToggleTheme";
 import Layout from "@component/components/shared/layout";
 import Head from "next/head";
 import { useState } from "react";
+import {
+  FaBox,
+  FaCss3,
+  FaGit,
+  FaHtml5,
+  FaNodeJs,
+  FaReact,
+  FaRust,
+} from "react-icons/fa";
 import Typewriter from "typewriter-effect";
+
+import {
+  SiCss3,
+  SiDocker,
+  SiGit,
+  SiHtml5,
+  SiJavascript,
+  SiMicrosoftsqlserver,
+  SiNeovim,
+  SiPostgresql,
+  SiReact,
+  SiTailwindcss,
+  SiTmux,
+  SiTypescript,
+  SiVim,
+} from "react-icons/si";
+import {
+  TbBrandCss3,
+  TbBrandHtml5,
+  TbBrandNextjs,
+  TbCodeDots,
+} from "react-icons/tb";
+import { VscTerminalBash, VscTools } from "react-icons/vsc";
+import Skills from "@component/components/home/Skills";
+import { Skill } from "@component/components/home/Skill";
+import { NodeJs } from "@public/images";
+import Contact from "@component/components/home/Contact";
 
 export default function Home() {
   let desc =
@@ -11,10 +47,16 @@ export default function Home() {
   let h1 = "Full-stack web developer, ";
   let h1p2 = "linux hobbyist";
 
-  // show projects when text loads
-  const [showMyProjects, setShowMyProjects] = useState(false);
-  const myProjects = showMyProjects ? <MyProjects /> : null;
+  // show rest of the page when text loads
+  const [showPage, setShowPage] = useState(false);
 
+  const rootStyle = { display: "flex", justifyContent: "center" };
+  const rowStyle = {
+    margin: "200px 0",
+    display: "flex",
+    justifyContent: "space-between",
+  };
+  const boxStyle = { padding: "10px", border: "1px solid black" };
   return (
     <>
       <Head>
@@ -38,10 +80,12 @@ export default function Home() {
           </h1>
 
           <h2 className="mt-4 text-center text-xl">{desc}</h2>
-          <h3 className="mt-4 text-xl"><MyProjects /></h3>
-
+          <h3 className="mt-4 text-xl">
+            <MyProjects />
+          </h3>
         </noscript>
-        <section className="flex flex-col">
+
+        <section>
           <h1 className="text-center font-bold text-2xl">
             <Typewriter
               onInit={(typewriter) => {
@@ -67,7 +111,7 @@ export default function Home() {
                   .changeDelay(16)
                   .typeString(desc)
                   .callFunction(() => {
-                    setShowMyProjects(true);
+                    setShowPage(true);
                   })
                   .start();
               }}
@@ -78,9 +122,71 @@ export default function Home() {
               }}
             />
           </h2>
-
-          <h3 className="mt-4 text-xl">{myProjects}</h3>
         </section>
+
+        {showPage ? (
+          <>
+            <section className="mt-4">
+              <MyProjects />
+            </section>
+            <section className="space-y-6 mt-6">
+              <h2 className=" text-xl font-bold text-center">Skills</h2>
+              <Skill
+                fields={[
+                  {
+                    name: "NextJs",
+                    Icon: TbBrandNextjs,
+                  },
+                  {
+                    name: "ReactJs",
+                    Icon: SiReact,
+                  },
+                  {
+                    name: "JavaScript",
+                    Icon: SiJavascript,
+                  },
+                  {
+                    name: "TypeScript",
+                    Icon: SiTypescript,
+                  },
+                  {
+                    name: "Node.js",
+                    Icon: FaNodeJs,
+                  },
+                  {
+                    name: "Rust",
+                    Icon: FaRust,
+                  },
+                  {
+                    name: "PostgreSQL",
+                    Icon: SiPostgresql,
+                  },
+                  {
+                    name: "Bash",
+                    Icon: VscTerminalBash,
+                  },
+                  {
+                    name: "HTML/CSS",
+                    Icon: SiHtml5,
+                  },
+                ]}
+              />
+              <h2 className="mt-4 text-xl font-bold text-center">Tools</h2>
+              <Skill
+                fields={[
+                  { name: "Vim", Icon: SiVim },
+                  { name: "Docker", Icon: SiDocker },
+                  { name: "Tmux", Icon: SiTmux },
+                ]}
+              />
+            </section>
+
+            <section>
+              <Contact />
+
+            </section>
+          </>
+        ) : null}
       </Layout>
     </>
   );

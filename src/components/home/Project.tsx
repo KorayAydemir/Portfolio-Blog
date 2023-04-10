@@ -2,6 +2,7 @@ import Image, { StaticImageData } from "next/image";
 import { IconType } from "react-icons";
 import { useGlitch } from "react-powerglitch";
 import { LinkOrDiv } from "../shared/LinkOrDiv";
+import { TbHandClick } from "react-icons/tb";
 
 interface Props {
   img: StaticImageData;
@@ -28,8 +29,8 @@ export default function Project(props: Props) {
   const fields = props.fields.map((field, i) => {
     const { name, Icon, link } = field;
     return (
-      <LinkOrDiv href={link!} className="px-3 py-0.5 flex-1 flex border-solid rounded border-2 dark:border-slate-400 border-gray-800 px-1 text-center" key={i}>
-        <Icon className="block my-auto " />
+      <LinkOrDiv href={link!} className="px-3 py-0.5 flex-1 flex border-solid rounded border-2 dark:border-slate-400 border-gray-800" key={i}>
+        <Icon className="block my-auto text-xl" />
         <span className="font-bold text-base ml-1.5">{name}</span>
       </LinkOrDiv>
     )

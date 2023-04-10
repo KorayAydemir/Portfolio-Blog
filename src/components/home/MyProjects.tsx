@@ -21,8 +21,8 @@ export default function MyProjects() {
   });
 
   return (
-    <div>
-      <h3 className="mb-4 font-bold ">
+    <>
+      <h3 className="mb-4 text-xl font-bold ">
         <Typewriter
           onInit={(typewriter) => {
             typewriter
@@ -63,6 +63,6 @@ export default function MyProjects() {
           ]}
         />
       </div>
-    </div>
+    </>
   );
 }
