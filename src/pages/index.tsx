@@ -4,24 +4,16 @@ import Layout from "@component/components/shared/layout";
 import Head from "next/head";
 import { useState } from "react";
 import {
-  FaBox,
-  FaCss3,
-  FaGit,
-  FaHtml5,
   FaNodeJs,
-  FaReact,
   FaRust,
 } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 
 import {
-  SiCss3,
   SiDocker,
   SiGit,
   SiHtml5,
   SiJavascript,
-  SiMicrosoftsqlserver,
-  SiNeovim,
   SiPostgresql,
   SiReact,
   SiTailwindcss,
@@ -30,15 +22,10 @@ import {
   SiVim,
 } from "react-icons/si";
 import {
-  TbBrandCss3,
-  TbBrandHtml5,
-  TbBrandNextjs,
-  TbCodeDots,
+  TbBrandNextjs, TbBrandTailwind,
 } from "react-icons/tb";
-import { VscTerminalBash, VscTools } from "react-icons/vsc";
-import Skills from "@component/components/home/Skills";
+import { VscTerminalBash } from "react-icons/vsc";
 import { Skill } from "@component/components/home/Skill";
-import { NodeJs } from "@public/images";
 import Contact from "@component/components/home/Contact";
 
 export default function Home() {
@@ -50,13 +37,6 @@ export default function Home() {
   // show rest of the page when text loads
   const [showPage, setShowPage] = useState(false);
 
-  const rootStyle = { display: "flex", justifyContent: "center" };
-  const rowStyle = {
-    margin: "200px 0",
-    display: "flex",
-    justifyContent: "space-between",
-  };
-  const boxStyle = { padding: "10px", border: "1px solid black" };
   return (
     <>
       <Head>
@@ -177,6 +157,7 @@ export default function Home() {
                   { name: "Vim", Icon: SiVim },
                   { name: "Docker", Icon: SiDocker },
                   { name: "Tmux", Icon: SiTmux },
+                  { name: "Git", Icon: SiGit }
                 ]}
               />
             </section>
