@@ -34,7 +34,7 @@ export default function test() {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                          <Link className="text-gray-900 dark:text-gray-100" href="/blog/post">
+                          <Link className="text-gray-900 dark:text-gray-100" href="/blog/hello-world">
                             How I used TinaCMS to give my blog superpowers</Link>
                         </h2>
                         <div className="flex flex-wrap">
@@ -52,7 +52,7 @@ export default function test() {
                         An overview of how I used TinaCMS, a WSIWYG editor, to manage my blog from anywhere. And the roadblocks I have encountered.</div>
                     </div>
                     <div className="text-base font-medium leading-6">
-                      <Link className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;New features in v1&quot;" href="/blog/post">
+                      <Link className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;New features in v1&quot;" href="/blog/hello-world">
                         Read more →</Link>
                     </div>
                   </div>
