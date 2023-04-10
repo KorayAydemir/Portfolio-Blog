@@ -4,6 +4,7 @@ import Layout from "@component/components/shared/layout";
 import Head from "next/head";
 import { useState } from "react";
 import {
+  FaArrowRight,
   FaNodeJs,
   FaRust,
 } from "react-icons/fa";
@@ -16,17 +17,15 @@ import {
   SiJavascript,
   SiPostgresql,
   SiReact,
-  SiTailwindcss,
   SiTmux,
   SiTypescript,
   SiVim,
 } from "react-icons/si";
-import {
-  TbBrandNextjs, TbBrandTailwind,
-} from "react-icons/tb";
+import { TbBrandNextjs } from "react-icons/tb";
 import { VscTerminalBash } from "react-icons/vsc";
 import { Skill } from "@component/components/home/Skill";
 import Contact from "@component/components/home/Contact";
+import Link from "next/link";
 
 export default function Home() {
   let desc =
@@ -106,10 +105,20 @@ export default function Home() {
 
         {showPage ? (
           <>
+            <section>
+              <h2 className="font-bold text-2xl">Latest Posts</h2>
+              <Link href="/blog">
+                <div className="mt-3 flex">
+                  <span className="mr-8">April 10, 2023</span>
+                  <span>How I used TinaCMS to give my blog superpowers</span>
+                </div>
+                <span className="mt-2">Go to Blog <FaArrowRight className="inline" /></span>
+              </Link>
+            </section>
             <section className="mt-4">
               <MyProjects />
             </section>
-            <section className="space-y-6 mt-6">
+            <section className="space-y-6 mt-8">
               <h2 className=" text-xl font-bold text-center">Skills</h2>
               <Skill
                 fields={[
