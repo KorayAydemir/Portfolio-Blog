@@ -38,24 +38,28 @@ export default defineConfig({
             name: "body",
             label: "Body",
             isBody: true,
+            required: true,
           },
           {
             type: "datetime",
             name: "date",
             label: "Date",
             isTitle: true,
+            required: true,
           },
           {
             label: 'Tags',
             name: 'tags',
             type: 'string',
             list: true,
+            required: true,
           },
 
           {
             type: "string",
             name: "summary",
             label: "Summary",
+            required: true,
           },
         ],
         ui: {

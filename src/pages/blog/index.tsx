@@ -1,9 +1,7 @@
 import Link from "next/link";
 import client from "tina/__generated__/client";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 export default function Blog({ posts }: any) {
-  console.log(posts);
   const postlist = posts.map((post: any) => {
     const tags = post.tags?.map((tag: any) => (
       <span key={tag} className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
@@ -83,7 +81,7 @@ export default function Blog({ posts }: any) {
   )
 }
 
-export const getStaticProps = async (ctx: any) => {
+export const getStaticProps = async () => {
   const postsResponse = await client.queries.postConnection()
   const posts = postsResponse.data.postConnection.edges?.map((post) => {
     return post?.node

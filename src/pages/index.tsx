@@ -26,29 +26,24 @@ import { VscTerminalBash } from "react-icons/vsc";
 import { Skill } from "@component/components/home/Skill";
 import Contact from "@component/components/home/Contact";
 import Link from "next/link";
-import { useTina } from "tinacms/dist/react";
 import { client } from "../../tina/__generated__/client"
 
-export const getStaticProps = async () => {
-  const { data, query, variables } = await client.queries.post({
-    relativePath: "hello-world.md"
-  })
-  return {
-    props: {
-      data, query, variables
+export default function Home({ posts }: any) {
+  console.log(posts)
+  let latestPosts = [];
+  for (let i = 0; i < 3; i++) {
+    if (posts[i] !== undefined) {
+      latestPosts.push(
+        <Link key={i} href="/blog">
+          <div className="mt-3 flex">
+            <span className="mr-8">{posts[i].date?.split("T")[0]}</span>
+            <span>{posts[i].title}</span>
+          </div>
+          <span className="mt-2">Go to Blog <FaArrowRight className="inline" /></span>
+        </Link>)
     }
+
   }
-}
-
-export default function Home(props: any) {
-
-  const { data } = useTina({
-    query: props.query,
-    variables: props.variables,
-    data: props.data,
-  });
-
-  const content = data.post.body;
 
   let desc =
     "Hi, my name is Koray. I'm a software engineer based in Istanbul/Türkiye.";
@@ -129,13 +124,7 @@ export default function Home(props: any) {
           <>
             <section>
               <h2 className="font-bold text-2xl">Latest Posts</h2>
-              <Link href="/blog">
-                <div className="mt-3 flex">
-                  <span className="mr-8">April 10, 2023</span>
-                  <span>How I used TinaCMS to give my blog superpowers</span>
-                </div>
-                <span className="mt-2">Go to Blog <FaArrowRight className="inline" /></span>
-              </Link>
+              {latestPosts}
             </section>
             <section className="mt-4">
               <MyProjects />
@@ -202,4 +191,17 @@ export default function Home(props: any) {
       </Layout>
     </>
   );
+}
+
+export const getStaticProps = async () => {
+  const postsResponse = await client.queries.postConnection()
+  const posts = postsResponse.data.postConnection.edges?.map((post) => {
+    return post?.node
+  })
+
+  return {
+    props: {
+      posts
+    },
+  };
 }
