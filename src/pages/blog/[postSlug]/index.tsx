@@ -43,8 +43,8 @@ export default function Post(props: any) {
 
 export const getStaticPaths = async () => {
   const { data } = await client.queries.postConnection();
-  const paths = data.postConnection.edges?.map((x) => {
-    return { params: { postSlug: x?.node?._sys.filename } };
+  const paths = data.postConnection.edges?.map((post) => {
+    return { params: { postSlug: post?.node?._sys.filename } };
   });
 
   return {
