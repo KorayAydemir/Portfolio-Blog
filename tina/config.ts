@@ -32,6 +32,7 @@ export default defineConfig({
             isTitle: true,
             required: true,
           },
+
           {
             type: "rich-text",
             name: "body",
@@ -39,21 +40,27 @@ export default defineConfig({
             isBody: true,
           },
           {
-            label: 'Tags',
-            name: 'tags',
-            type: 'string',
-            list: true,
-          },
-          {
             type: "datetime",
             name: "date",
             label: "Date",
             isTitle: true,
           },
+          {
+            label: 'Tags',
+            name: 'tags',
+            type: 'string',
+            list: true,
+          },
+
+          {
+            type: "string",
+            name: "summary",
+            label: "Summary",
+          },
         ],
         ui: {
           // This is an DEMO router. You can remove this to fit your site
-          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
+          router: ({ document }) => `/blog/${document._sys.filename}`,
         },
       },
     ],
