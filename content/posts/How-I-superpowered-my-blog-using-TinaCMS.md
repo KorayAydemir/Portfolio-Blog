@@ -1,6 +1,9 @@
 ---
 title: How I superpowered my blog using TinaCMS
 tags:
+  - TinaCMS
+  - Guide
+  - Tailwind
   - NextJS
 date: '2023-03-03T21:00:00.000Z'
 summary: >-
