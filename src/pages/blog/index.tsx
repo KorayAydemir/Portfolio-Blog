@@ -4,55 +4,54 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 export default function Blog({ posts }: any) {
   console.log(posts);
-  const postlist = posts.map((post: any) => (
-    <div className="divide-y divide-gray-200 dark:divide-gray-700" key={post.title}>
+  const postlist = posts.map((post: any) => {
+    const tags = post.tags?.map((tag: any) => (
+      <span key={tag} className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
+        {tag}</span>
+    ))
+    return (
+      < div className="divide-y divide-gray-200 dark:divide-gray-700" key={post.title} >
 
-      <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-        <li className="py-12">
-          <article>
-            <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-              <dl>
-                <dt className="sr-only">
-                  Published on</dt>
-                <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                  <time dateTime="2021-08-07T15:32:14.000Z">
-                    {post.date?.split("T")[0]}</time>
-                </dd>
-              </dl>
-              <div className="space-y-5 xl:col-span-3">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                      <Link className="text-gray-900 dark:text-gray-100"
-                        href={`/blog/${post._sys.filename}`}>
-                        {post.title}
-                      </Link>
-                    </h2>
-                    <div className="flex flex-wrap">
-                      <span className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
-                        next-js</span>
-                      <span className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
-                        tailwind</span>
-                      <span className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
-                        tinacms</span>
-                      <span className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" >
-                        guide</span>
+        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+          <li className="py-12">
+            <article>
+              <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
+                <dl>
+                  <dt className="sr-only">
+                    Published on</dt>
+                  <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                    <time dateTime="2021-08-07T15:32:14.000Z">
+                      {post.date?.split("T")[0]}</time>
+                  </dd>
+                </dl>
+                <div className="space-y-5 xl:col-span-3">
+                  <div className="space-y-6">
+                    <div>
+                      <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                        <Link className="text-gray-900 dark:text-gray-100"
+                          href={`/blog/${post._sys.filename}`}>
+                          {post.title}
+                        </Link>
+                      </h2>
+                      <div className="flex flex-wrap">
+                        {tags}
+                      </div>
                     </div>
+                    <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                      {post.summary}</div>
                   </div>
-                  <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                    {post.summary}</div>
-                </div>
-                <div className="text-base font-medium leading-6">
-                  <Link className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;New features in v1&quot;" href="/blog/hello-world">
-                    Read more →</Link>
+                  <div className="text-base font-medium leading-6">
+                    <Link className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="Read &quot;New features in v1&quot;" href={`/blog/${post._sys.filename}`}>
+                      Read more →</Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
-        </li>
-      </ul>
-    </div>
-  ))
+            </article>
+          </li>
+        </ul>
+      </div >
+    )
+  })
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
