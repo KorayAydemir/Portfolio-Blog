@@ -26,6 +26,7 @@
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1"

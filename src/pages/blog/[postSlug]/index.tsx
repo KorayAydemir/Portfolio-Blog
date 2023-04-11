@@ -2,6 +2,7 @@ import { useTina } from "tinacms/dist/react";
 import client from "tina/__generated__/client";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import ToggleTheme from "@component/components/shared/ToggleTheme";
+import markdownStyles from "./markdown-styles.module.css"
 
 export default function Post(props: any) {
   const { data } = useTina({
@@ -38,7 +39,9 @@ export default function Post(props: any) {
                 </div>
               </div>
             </header>
-            <TinaMarkdown content={data.post.body}></TinaMarkdown>
+            <div className="prose prose-slate prose-lg dark:prose-invert">
+              <TinaMarkdown content={data.post.body}></TinaMarkdown>
+            </div>
           </div>
         </main>
       </div>
