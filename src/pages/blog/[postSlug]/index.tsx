@@ -39,7 +39,7 @@ export default function Post(props: any) {
                 </div>
               </div>
             </header>
-            <div className="prose prose-slate prose-lg dark:prose-invert">
+            <div className="prose prose-slate prose-lg dark:prose-invert dark:prose-pre:bg-white dark:prose-pre:text-neutral-800">
               <TinaMarkdown content={data.post.body}></TinaMarkdown>
             </div>
           </div>
