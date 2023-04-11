@@ -36,8 +36,8 @@ export default function Home({ posts }: any) {
       latestPosts.push(
         <Link key={i} href="/blog">
           <div className="mt-3 flex">
-            <span className="mr-8">{posts[i].date?.split("T")[0]}</span>
-            <span>{posts[i].title}</span>
+            <span className="mr-8 text-lg">{posts[i].date?.split("T")[0]}</span>
+            <span className="font-bold text-lg">{posts[i].title}</span>
           </div>
           <span className="mt-2">Go to Blog <FaArrowRight className="inline" /></span>
         </Link>)
@@ -46,7 +46,7 @@ export default function Home({ posts }: any) {
   }
 
   let desc =
-    "Hi, my name is Koray. I'm a software engineer based in Istanbul/Türkiye.";
+    "Hi, my name is Koray. I'm a software developer based in Istanbul/Türkiye.";
   let h1 = "Full-stack web developer, ";
   let h1p2 = "linux hobbyist";
 
@@ -123,7 +123,19 @@ export default function Home({ posts }: any) {
         {showPage ? (
           <>
             <section>
-              <h2 className="font-bold text-2xl">Latest Posts</h2>
+              <h2 className="font-bold text-2xl">
+                <Typewriter
+                  onInit={(typewriter) => {
+                    typewriter
+                      .changeDelay(18)
+                      .typeString("Latest Posts")
+                      .start();
+                  }}
+                  options={{
+                    cursor: "",
+                  }}
+                />
+              </h2>
               {latestPosts}
             </section>
             <section className="mt-4">

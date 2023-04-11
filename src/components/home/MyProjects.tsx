@@ -1,5 +1,5 @@
 import Typewriter from "typewriter-effect";
-import { MySetup, Portfolio } from "@public/images/index";
+import { MySetup, Portfolio, This } from "@public/images/index";
 import { useGlitch } from "react-powerglitch";
 import Project from "./Project";
 import {
@@ -11,6 +11,8 @@ import {
 } from "react-icons/si";
 import { TbBrandNextjs } from "react-icons/tb";
 import { FaGithub } from "react-icons/fa";
+
+import { FcLikePlaceholder } from "react-icons/fc"
 
 export default function MyProjects() {
   const manualGlitch = useGlitch({
@@ -59,7 +61,18 @@ export default function MyProjects() {
             { name: "ShellScript", Icon: SiGnubash },
             { name: "Arch", Icon: SiArchlinux },
             { name: "Neovim", Icon: SiNeovim },
-            { name: "Github", Icon: FaGithub },
+            { name: "Github", Icon: FaGithub, link: "https://github.com/KorayAydemir/Dots" },
+          ]}
+        />
+
+        <Project
+          img={This}
+          alt="this-portfolio"
+          fields={[{ name: "NextJS", Icon: TbBrandNextjs },
+          { name: "TinaCMS", Icon: FcLikePlaceholder },
+          { name: "Tailwind", Icon: SiTailwindcss },
+          { name: "TypeScript", Icon: SiTypescript },
+          { name: "GitHub", Icon: FaGithub, link: "https://github.com/KorayAydemir/NextLearn" },
           ]}
         />
       </div>

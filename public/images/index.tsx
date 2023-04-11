@@ -12,3 +12,4 @@ export { default as Tailwind } from './home/icons/tailwind.png'
 export { default as NextJs } from './home/icons/nextjs.svg'
 export { default as Ts } from './home/icons/ts.svg'
 
+export { default as This } from './home/this.png'
