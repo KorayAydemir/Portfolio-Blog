@@ -1,3 +1,4 @@
+import ToggleTheme from "@component/components/shared/ToggleTheme";
 import Link from "next/link";
 import client from "tina/__generated__/client";
 
@@ -52,6 +53,9 @@ export default function Blog({ posts }: any) {
   })
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+      <div className="flex justify-end mt-4 mr-4">
+        <ToggleTheme />
+      </div>
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Latest</h1>
