@@ -4,12 +4,9 @@ import Layout from "@component/components/shared/layout";
 import Head from "next/head";
 import { useState } from "react";
 import {
-  FaArrowRight,
   FaNodeJs,
   FaRust,
 } from "react-icons/fa";
-import Typewriter from "typewriter-effect";
-
 import {
   SiDocker,
   SiGit,
@@ -25,34 +22,19 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { VscTerminalBash } from "react-icons/vsc";
 import { Skill } from "@component/components/home/Skill";
 import Contact from "@component/components/home/Contact";
-import Link from "next/link";
 import { client } from "../../tina/__generated__/client"
+import { IntroText } from "@component/components/home/IntroText";
+import { LatestPosts } from "@component/components/home/LatestPosts";
 
 export default function Home({ posts }: any) {
-  console.log(posts)
-  let latestPosts = [];
-  for (let i = 0; i < 3; i++) {
-    if (posts[i] !== undefined) {
-      latestPosts.push(
-        <Link key={i} href="/blog">
-          <div className="mt-3 flex">
-            <span className="mr-8 text-lg">{posts[i].date?.split("T")[0]}</span>
-            <span className="font-bold text-lg">{posts[i].title}</span>
-          </div>
-          <span className="mt-2">Go to Blog <FaArrowRight className="inline" /></span>
-        </Link>)
-    }
-
+  // show rest of the page when text loads
+  const [showPage, setShowPage] = useState(false);
+  const showPageHandler = () => {
+    setShowPage(true)
   }
 
   let desc =
     "Hi, my name is Koray. I'm a software developer based in Istanbul/Türkiye.";
-  let h1 = "Full-stack web developer, ";
-  let h1p2 = "linux hobbyist";
-
-  // show rest of the page when text loads
-  const [showPage, setShowPage] = useState(false);
-
   return (
     <>
       <Head>
@@ -64,83 +46,24 @@ export default function Home({ posts }: any) {
           <link rel="stylesheet" type="text/css" href="/noscript.css" />
         </noscript>
       </Head>
+
       <div className="flex justify-end mt-4 mr-4">
         <ToggleTheme />
       </div>
 
       <Layout>
-        <noscript>
-          <h1 className="text-center font-bold text-2xl">
-            {h1}
-            {h1p2}
-          </h1>
-
-          <h2 className="mt-4 text-center text-xl">{desc}</h2>
-          <h3 className="mt-4 text-xl">
-            <MyProjects />
-          </h3>
-        </noscript>
-
-        <section>
-          <h1 className="text-center font-bold text-2xl">
-            <Typewriter
-              onInit={(typewriter) => {
-                typewriter
-                  .changeDelay(18)
-                  .typeString(h1)
-                  .pauseFor(580)
-                  .typeString(h1p2)
-                  .start();
-              }}
-              options={{
-                cursor: "T",
-                cursorClassName:
-                  "bg-neutral-900 text-neutral-900 dark:bg-white dark:text-white Typewriter__cursor",
-              }}
-            />
-          </h1>
-
-          <h2 className="mt-4 text-center text-xl">
-            <Typewriter
-              onInit={(typewriter) => {
-                typewriter
-                  .changeDelay(16)
-                  .typeString(desc)
-                  .callFunction(() => {
-                    setShowPage(true);
-                  })
-                  .start();
-              }}
-              options={{
-                cursor: "",
-                cursorClassName:
-                  "p-[0.6px] bg-neutral-900 text-neutral-900 dark:bg-white dark:text-white Typewriter__cursor",
-              }}
-            />
-          </h2>
-        </section>
+        <IntroText desc={desc} showPageHandler={showPageHandler} />
 
         {showPage ? (
           <>
             <section>
-              <h2 className="font-bold text-2xl">
-                <Typewriter
-                  onInit={(typewriter) => {
-                    typewriter
-                      .changeDelay(18)
-                      .typeString("Latest Posts")
-                      .start();
-                  }}
-                  options={{
-                    cursor: "",
-                  }}
-                />
-              </h2>
-              {latestPosts}
+              <LatestPosts posts={posts} />
             </section>
+
             <section className="mt-4">
               <MyProjects />
             </section>
+
             <section className="space-y-6 mt-8">
               <h2 className=" text-xl font-bold text-center">Skills</h2>
               <Skill
@@ -183,6 +106,7 @@ export default function Home({ posts }: any) {
                   },
                 ]}
               />
+
               <h2 className="mt-4 text-xl font-bold text-center">Tools</h2>
               <Skill
                 fields={[
@@ -196,7 +120,6 @@ export default function Home({ posts }: any) {
 
             <section>
               <Contact />
-
             </section>
           </>
         ) : null}

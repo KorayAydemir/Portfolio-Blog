@@ -1,6 +1,5 @@
 import Typewriter from "typewriter-effect";
 import { MySetup, Portfolio, This } from "@public/images/index";
-import { useGlitch } from "react-powerglitch";
 import Project from "./Project";
 import {
   SiArchlinux,
@@ -15,13 +14,6 @@ import { FaGithub } from "react-icons/fa";
 import { FcLikePlaceholder } from "react-icons/fc"
 
 export default function MyProjects() {
-  const manualGlitch = useGlitch({
-    playMode: "hover",
-    timing: { duration: 400 },
-    glitchTimeSpan: false,
-    shake: false,
-  });
-
   return (
     <>
       <h3 className="mb-4 text-xl font-bold ">

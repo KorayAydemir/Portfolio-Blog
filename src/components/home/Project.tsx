@@ -2,7 +2,6 @@ import Image, { StaticImageData } from "next/image";
 import { IconType } from "react-icons";
 import { useGlitch } from "react-powerglitch";
 import { LinkOrDiv } from "../shared/LinkOrDiv";
-import { TbHandClick } from "react-icons/tb";
 
 interface Props {
   img: StaticImageData;
