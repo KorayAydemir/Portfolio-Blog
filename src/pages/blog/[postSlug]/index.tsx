@@ -12,6 +12,9 @@ export default function Post(props: any) {
     data: props.data,
   });
 
+
+
+
   return (
     <WideLayout>
       <div className="flex justify-end mr-4">
