@@ -45,7 +45,6 @@ export default function Post(props: any) {
         </main>
       </div>
     </WideLayout>
-
   );
 }
 
