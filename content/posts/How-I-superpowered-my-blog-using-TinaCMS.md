@@ -11,6 +11,6 @@ summary: >-
   have encountered.
 ---
 
-![this-site-image](/uploads/images/home/this.png "Resim")
+![](/uploads/images/home/this.png)
 
 ## To be written article
