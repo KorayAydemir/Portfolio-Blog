@@ -2,7 +2,7 @@ import { useTina } from "tinacms/dist/react";
 import client from "tina/__generated__/client";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import ToggleTheme from "@component/components/shared/ToggleTheme";
-import markdownStyles from "./markdown-styles.module.css"
+import WideLayout from "@component/components/shared/layout_wide";
 
 export default function Post(props: any) {
   const { data } = useTina({
@@ -10,10 +10,9 @@ export default function Post(props: any) {
     variables: props.variables,
     data: props.data,
   });
-  console.log(data);
 
   return (
-    <div className="mt-14 mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+    <WideLayout>
       <div className="flex justify-end mr-4">
         <ToggleTheme />
       </div>
@@ -45,7 +44,8 @@ export default function Post(props: any) {
           </div>
         </main>
       </div>
-    </div>
+    </WideLayout>
+
   );
 }
 
