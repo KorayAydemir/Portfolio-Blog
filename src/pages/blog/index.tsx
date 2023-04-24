@@ -41,7 +41,7 @@ function PostsList({ posts }: { posts: Post[] }) {
     <>{
       posts.map((post: Post) => {
         return (
-          <Post title={post.title} _sys={post._sys} summary={post.summary} date={post.date} tags={post.tags} />
+          <Post key={post.title} title={post.title} _sys={post._sys} summary={post.summary} date={post.date} tags={post.tags} />
         )
       })
     }</>
