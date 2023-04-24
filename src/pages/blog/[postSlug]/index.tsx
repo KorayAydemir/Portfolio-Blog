@@ -4,6 +4,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import ToggleTheme from "@component/components/shared/ToggleTheme";
 import WideLayout from "@component/components/shared/layout_wide";
 
+
 export default function Post(props: any) {
   const { data } = useTina({
     query: props.query,
@@ -44,7 +45,7 @@ export default function Post(props: any) {
           </div>
         </main>
       </div>
-    </WideLayout>
+    </WideLayout >
   );
 }
 
