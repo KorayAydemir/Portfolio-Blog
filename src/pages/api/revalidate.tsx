@@ -14,12 +14,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
   console.log(req)
 
-  if (!isValidRequest(req, secret)) {
-    res.status(401).json({
-      message: `Invalid signature: ${secret}, got: ${req.body}`
-    })
-    return
-  }
+  // if (!isValidRequest(req, secret)) {
+  //   res.status(401).json({
+  //     message: `Invalid signature: ${secret}, got: ${req.body}`
+  //   })
+  //   return
+  // }
 
   try {
     const {
