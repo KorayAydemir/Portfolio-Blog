@@ -1,4 +1,4 @@
-import { isValidRequest } from "@sanity/webhook"
+import { SIGNATURE_HEADER_NAME, isValidRequest } from "@sanity/webhook"
 import type { NextApiRequest, NextApiResponse } from "next"
 
 type Data = {
@@ -13,7 +13,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return res.status(401).json({ message: "Must be a POST request" })
   }
 
-  if (!isValidRequest(req, secret)) {
+  const signature: any = req.headers[SIGNATURE_HEADER_NAME]
+
+  if (!isValidRequest(signature, secret)) {
     res.status(401).json({ message: `Invalid signature: ${secret}`, })
     return
   }
