@@ -13,9 +13,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return res.status(401).json({ message: "Must be a POST request" })
   }
 
-  const signature: any = req.headers[SIGNATURE_HEADER_NAME]
 
-  if (!isValidRequest(signature, secret)) {
+  if (!isValidRequest(req, secret)) {
     res.status(401).json({ message: `Invalid signature: ${secret}`, })
     return
   }
@@ -35,5 +34,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   } catch (err) {
     return res.status(500).send({ message: "Error revalidating" })
   }
+}
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
 }
 
