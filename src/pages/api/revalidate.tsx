@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         return res.json({ message: `Revalidated "${email}"'s comment on slug "${postSlug}"` })
     }
 
-    return res.json({ message: "No managed type" })
+    return res.json({ message: "No managed type: " + type })
   } catch (err) {
     return res.status(500).send({ message: "Error revalidating: " + err })
   }
