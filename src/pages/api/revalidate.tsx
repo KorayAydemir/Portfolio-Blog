@@ -23,6 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const {
       body: { _type, email, post },
     } = req
+    console.log(req.body);
 
     switch (_type) {
       case 'comment':
