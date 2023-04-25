@@ -5,7 +5,7 @@ type Data = {
   message: string
 }
 
-const secret = process.env.SANITY_ISR_WEBHOOK!
+const secret: any = process.env.SANITY_ISR_WEBHOOK
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   if (req.method !== "POST") {
