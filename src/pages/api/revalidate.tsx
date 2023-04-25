@@ -12,7 +12,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     console.error("Must be a POST request")
     return res.status(401).json({ message: "Must be a POST request" })
   }
-  console.log(req)
 
   // if (!isValidRequest(req, secret)) {
   //   res.status(401).json({
@@ -23,18 +22,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   try {
     const {
-      body: { email, postSlug, approved },
+      body: { type, email, postSlug },
     } = req
+    console.log(type, email, postSlug)
 
-    switch (approved) {
-      case true:
+    switch (type) {
+      case 'comment':
         await res.revalidate(`/blog/${postSlug}`)
         return res.json({ message: `Revalidated "${email}"'s comment on slug "${postSlug}"` })
     }
 
     return res.json({ message: "No managed type" })
   } catch (err) {
-    return res.status(500).send({ message: "Error revalidating" })
+    return res.status(500).send({ message: "Error revalidating: " + err })
   }
 }
 
