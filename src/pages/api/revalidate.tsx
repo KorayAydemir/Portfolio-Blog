@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     switch (approved) {
       case true:
-        await res.revalidate(`/ blog / ${postSlug}`)
+        await res.revalidate(`/blog/${postSlug}`)
         return res.json({ message: `Revalidated "${email}"'s comment on slug "${postSlug}"` })
     }
 
