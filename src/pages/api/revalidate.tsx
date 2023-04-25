@@ -22,17 +22,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   try {
     const {
-      body: { type, email, postSlug },
+      body: { _type, email, post },
     } = req
     console.log(JSON.stringify(req.body))
 
-    switch (type) {
+    switch (_type) {
       case 'comment':
-        await res.revalidate(`/blog/${postSlug}`)
-        return res.json({ message: `Revalidated "${email}"'s comment on slug "${postSlug}"` })
+        await res.revalidate(`/blog/${post}`)
+        return res.json({ message: `Revalidated "${email}"'s comment on slug "${post}"` })
     }
 
-    return res.json({ message: "No managed type: " + type })
+    return res.json({ message: "No managed type: " + _type })
   } catch (err) {
     return res.status(500).send({ message: "Error revalidating: " + err })
   }
