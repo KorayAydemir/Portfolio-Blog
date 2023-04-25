@@ -13,10 +13,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return res.status(401).json({ message: "Must be a POST request" })
   }
 
-  console.log(req.headers['x-sanity-webhook-signature'])
+  const sanitysig = req.headers['x-sanity-webhook-signature']
 
   if (!isValidRequest(req, secret)) {
-    res.status(401).json({ message: `Invalid signature: ${secret}`, })
+    res.status(401).json({ message: `Invalid signature: ${secret}, ${sanitysig}`, })
     return
   }
 
