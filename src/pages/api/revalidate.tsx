@@ -6,6 +6,12 @@ type Data = {
 }
 
 const secret: any = process.env.SANITY_ISR_WEBHOOK
+// if (!isValidRequest(req, secret)) {
+//   res.status(401).json({
+//     message: `Invalid signature: ${secret}, got: ${req.body}`
+//   })
+//   return
+// }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   if (req.method !== "POST") {
@@ -13,18 +19,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return res.status(401).json({ message: "Must be a POST request" })
   }
 
-  // if (!isValidRequest(req, secret)) {
-  //   res.status(401).json({
-  //     message: `Invalid signature: ${secret}, got: ${req.body}`
-  //   })
-  //   return
-  // }
-
   try {
     const {
       body: { _type, email, post },
     } = req
-    console.log(JSON.stringify(req.body))
 
     switch (_type) {
       case 'comment':
@@ -37,5 +35,3 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return res.status(500).send({ message: "Error revalidating: " + err })
   }
 }
-
-
