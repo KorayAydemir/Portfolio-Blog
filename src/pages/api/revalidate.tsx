@@ -12,10 +12,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     console.error("Must be a POST request")
     return res.status(401).json({ message: "Must be a POST request" })
   }
+  const myReq = JSON.stringify(req)
 
-  const sanitysig = req.headers;
   if (!isValidRequest(req, secret)) {
-    res.status(401).json({ message: `Invalid signature: ${secret}, ${sanitysig}`, })
+    res.status(401).json({
+      message: `Invalid signature: ${secret}, expected: ${myReq}`
+    })
     return
   }
 
@@ -26,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     switch (approved) {
       case true:
-        await res.revalidate(`/blog/${postSlug}`)
+        await res.revalidate(`/ blog / ${postSlug}`)
         return res.json({ message: `Revalidated "${email}"'s comment on slug "${postSlug}"` })
     }
 
