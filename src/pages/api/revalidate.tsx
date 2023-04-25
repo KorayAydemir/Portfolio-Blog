@@ -12,11 +12,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     console.error("Must be a POST request")
     return res.status(401).json({ message: "Must be a POST request" })
   }
-  const myReq = JSON.stringify(req)
+  console.log(req)
 
   if (!isValidRequest(req, secret)) {
     res.status(401).json({
-      message: `Invalid signature: ${secret}, expected: ${myReq}`
+      message: `Invalid signature: ${secret}`
     })
     return
   }
@@ -38,9 +38,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 }
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}
 
