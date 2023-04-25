@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   if (!isValidRequest(req, secret)) {
-    res.status(401).json({ message: "Invalid signature" })
+    res.status(401).json({ message: `Invalid signature: ${secret}`, })
     return
   }
 
