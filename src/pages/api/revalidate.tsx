@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const {
       body: { type, email, postSlug },
     } = req
-    console.log(type, email, postSlug)
+    console.log(JSON.stringify(req.body))
 
     switch (type) {
       case 'comment':
