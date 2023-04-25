@@ -5,11 +5,8 @@ import Head from 'next/head'
 import { useTina } from 'tinacms/dist/react'
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import client from '../../../../tina/__generated__/client'
-import { useEffect, useState } from 'react'
 
 const BlogPage = (props: any) => {
-
-
   const { data } = useTina({
     query: props.query,
     variables: props.variables,

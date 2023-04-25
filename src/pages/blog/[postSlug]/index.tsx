@@ -3,17 +3,17 @@ import client from "tina/__generated__/client";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import ToggleTheme from "@component/components/shared/ToggleTheme";
 import WideLayout from "@component/components/shared/layout_wide";
+import { CommentForm } from "@component/components/blog/CommentForm";
+import { Comments } from "@component/components/blog/Comments";
+import { createClient } from "next-sanity";
 
 
 export default function Post(props: any) {
   const { data } = useTina({
-    query: props.query,
-    variables: props.variables,
-    data: props.data,
+    query: props.tina.query,
+    variables: props.tina.variables,
+    data: props.tina.data,
   });
-
-
-
 
   return (
     <WideLayout>
@@ -46,6 +46,11 @@ export default function Post(props: any) {
               <TinaMarkdown content={data.post.body}></TinaMarkdown>
             </div>
           </div>
+
+          <div className="mt-28">
+            <Comments comments={props.comments} />
+            <CommentForm _id={data.post._sys.filename} />
+          </div>
         </main>
       </div>
     </WideLayout >
@@ -69,11 +74,27 @@ export const getStaticProps = async (ctx: any) => {
     relativePath: ctx.params.postSlug + ".md",
   });
 
+  const postName = ctx.params.postSlug;
+  const commentsQuery = `*[_type == "comment" && post == "${postName}" && approved == true]`
+  const comments = await sanityClient.fetch(commentsQuery);
+
   return {
     props: {
-      data,
-      query,
-      variables,
+      tina: {
+        data,
+        query,
+        variables
+      },
+      comments,
     },
   };
 };
+
+const sanityClient = createClient({
+  projectId: 'j13exjw5',
+  dataset: "production",
+  apiVersion: "2022-03-25",
+  useCdn: false
+});
+
+

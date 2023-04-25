@@ -1,3 +1,5 @@
+import { CommentForm } from "@component/components/blog/CommentForm";
+import { Comments } from "@component/components/blog/Comments";
 import { createClient } from "next-sanity";
 
 export default function IndexPage({ pets }: any) {
@@ -7,20 +9,7 @@ export default function IndexPage({ pets }: any) {
         <h1>Sanity + Next.js</h1>
       </header>
       <main>
-        <h2>pets</h2>
-        {pets.length > 0 && (
-          <ul>
-            {pets.map((pet: any) => (
-              <li key={pet._id}>{pet?.name}</li>
-            ))}
-          </ul>
-        )}
         {!(pets.length > 0) && <p>No pets to show</p>}
-        {pets.length > 0 && (
-          <div>
-            <pre>{JSON.stringify(pets, null, 2)}</pre>
-          </div>
-        )}
         {!(pets.length > 0) && (
           <div>
             <div>¯\_(ツ)_/¯</div>
@@ -30,6 +19,7 @@ export default function IndexPage({ pets }: any) {
             </p>
           </div>
         )}
+        <Comments comments={pets} /> <CommentForm _id={pets._id} />
       </main>
     </>
   );
@@ -44,7 +34,9 @@ const client = createClient({
 
 
 export async function getStaticProps() {
-  const pets = await client.fetch(`*[_type == "pet"]`);
+  const postName = "FirstPost"
+  const comments = `*[_type == "comment" && post == "${postName}" && approved == true]`
+  const pets = await client.fetch(comments);
 
   return {
     props: {
