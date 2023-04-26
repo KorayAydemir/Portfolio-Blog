@@ -39,7 +39,7 @@ export default function ToggleTheme() {
 
   return (
     <div className="flex flex-row items-center gap-1">
-      <span className="">☀️</span>
+      <span>☀️</span>
       {Checkbox}
       <span>🌒</span>
     </div>

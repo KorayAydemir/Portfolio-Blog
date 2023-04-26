@@ -10,7 +10,7 @@ export const CommentForm = ({ _id }: any) => {
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
   // Prepares the functions from react-hook-form
-  const { register, handleSubmit, watch } = useForm()
+  const { register, handleSubmit } = useForm()
 
   if (isSubmitting) {
     // Returns a "Submitting comment" state if being processed
