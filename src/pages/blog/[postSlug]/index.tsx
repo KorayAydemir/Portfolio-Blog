@@ -17,7 +17,7 @@ export default function Post(props: any) {
 
   return (
     <WideLayout>
-      <div className="flex justify-end mr-4">
+      <div className="flex justify-end mr-4 mt-5">
         <ToggleTheme />
       </div>
       <div className="flex h-screen flex-col justify-between">
@@ -96,5 +96,3 @@ const sanityClient = createClient({
   apiVersion: "2022-03-25",
   useCdn: false
 });
-
-
