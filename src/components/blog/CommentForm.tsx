@@ -10,7 +10,7 @@ export const CommentForm = ({ _id }: any) => {
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
     // Prepares the functions from react-hook-form
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     if (isSubmitting) {
         // Returns a "Submitting comment" state if being processed
@@ -52,25 +52,44 @@ export const CommentForm = ({ _id }: any) => {
 
     return (
         // Sets up the Form markup
+        // Input fields should use aria-invalid to indicate field contain error.
+        // Should use role="alert" to announce the error messages.
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
             <input {...register("register")} type="hidden" name="post" value={_id} />
 
-            <label className="block mb-5">
-                <span className="text-gray-700">Name</span>
-                <input {...register("name", { required: true })} name="name" className="form-input mt-1 block w-full" placeholder="John Cena" />
-            </label>
+            <div className="block mb-5">
+                <label htmlFor="name" className="text-gray-700">Name</label>
 
-            <label className="block mb-5">
-                <span className="text-gray-700">Email</span>
-                <input  {...register("email")} name="email" type="email" className="form-input mt-1 block w-full" placeholder="your@email.com" />
-            </label>
+                <input {...register("name", { required: true, maxLength: 60 })}
+                    name="name" placeholder="John Cena"
+                    aria-invalid={errors.name ? "true" : "false"}
+                    className="form-input mt-1 block w-full" />
+                {errors.name?.type === "required" && <p className="text-red-400" role="alert">Name can&apos;t be empty.</p>}
+                {errors.name?.type === "maxLength" && <p role="alert">Name can&apos;t be longer than 60 characters.</p>}
+            </div>
 
-            <label className="block mb-5">
-                <span className="text-gray-700">Comment</span>
-                <textarea  {...register("comment", { required: true })} name="comment" className="form-textarea mt-1 block w-full" rows={8} placeholder="Enter some long form content."></textarea>
-            </label>
+            <div className="block mb-5">
+                <label htmlFor="email" className="text-gray-700">Email</label>
+                <input  {...register("email", { pattern: /^\S+@\S+$/i, required: true, maxLength: 254, minLength: 5 })}
+                    name="email" type="email" className="form-input mt-1 block w-full" placeholder="your@email.com" />
+                {errors.email?.type === "required" && <p role="alert">Email can&apos;t be empty.</p>}
+                {errors.email?.type === "maxLength" && <p role="alert">Email can&apos;t be longer than 254 characters.</p>}
+                {errors.email?.type === "minLength" && <p role="alert">Email can&apos;t be shorter than 5 characters.</p>}
+                {errors.email?.type === "pattern" && <p role="alert">Email is invalid.</p>}
+            </div>
+
+            <div className="block mb-5">
+                <label htmlFor="comment" className="text-gray-700">Comment</label>
+                <textarea  {...register("comment", { required: true, maxLength: 1024 })}
+                    name="comment" placeholder="Enter your comment here."
+                    className="form-textarea mt-1 block w-full" rows={8}
+                    aria-invalid={errors.comment ? "true" : "false"}
+                ></textarea>
+                {errors.comment?.type === "required" && <p role="alert">Comment can&apos;t be empty.</p>}
+                {errors.comment?.type === "maxLength" && <p role="alert">Comment can&apos;t be longer than 1024 characters.</p>}
+            </div>
 
             <input type="submit" className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" />
-        </form>
+        </form >
     )
 }
