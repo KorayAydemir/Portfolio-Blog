@@ -59,7 +59,7 @@ export const CommentForm = ({ _id }: any) => {
                 body: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `${token}`
+                    'Authorization': token
                 }
             })
             setIsSubmitting(false)
