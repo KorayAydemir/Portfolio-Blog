@@ -39,9 +39,8 @@ export default async function createComment(req: any, res: any) {
             })
         }
     } catch (err) {
-        const response = await verifyRecaptcha(token);
         console.error(err)
-        return res.status(500).json({ message: `Couldn't submit comment`, response })
+        return res.status(500).json({ message: `Couldn't submit comment` })
     }
 
     //return res.status(200).json({ message: 'Comment submitted' })
