@@ -8,7 +8,7 @@ export default function Document() {
                     <link rel="stylesheet" type="text/css" href="/noscript.css" />
                 </noscript>
             </Head>
-            <body className='bg-[#fff] dark:bg-black'>
+            <body className='bg-[#dee4e7] dark:bg-black'>
                 <Main />
                 <NextScript />
             </body>

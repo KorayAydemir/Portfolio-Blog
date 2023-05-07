@@ -65,17 +65,17 @@ export const CommentForm = ({ _id }: any) => {
                     aria-invalid={errors.name ? "true" : "false"}
                     className="form-input mt-1 block w-full" />
                 {errors.name?.type === "required" && <p className="text-red-400" role="alert">Name can&apos;t be empty.</p>}
-                {errors.name?.type === "maxLength" && <p role="alert">Name can&apos;t be longer than 60 characters.</p>}
+                {errors.name?.type === "maxLength" && <p className="text-red-400" role="alert">Name can&apos;t be longer than 60 characters.</p>}
             </div>
 
             <div className="block mb-5">
                 <label htmlFor="email" className="text-gray-700">Email</label>
                 <input  {...register("email", { pattern: /^\S+@\S+$/i, required: true, maxLength: 254, minLength: 5 })}
                     name="email" type="email" className="form-input mt-1 block w-full" placeholder="your@email.com" />
-                {errors.email?.type === "required" && <p role="alert">Email can&apos;t be empty.</p>}
-                {errors.email?.type === "maxLength" && <p role="alert">Email can&apos;t be longer than 254 characters.</p>}
-                {errors.email?.type === "minLength" && <p role="alert">Email can&apos;t be shorter than 5 characters.</p>}
-                {errors.email?.type === "pattern" && <p role="alert">Email is invalid.</p>}
+                {errors.email?.type === "required" && <p className="text-red-400" role="alert">Email can&apos;t be empty.</p>}
+                {errors.email?.type === "maxLength" && <p className="text-red-400" role="alert">Email can&apos;t be longer than 254 characters.</p>}
+                {errors.email?.type === "minLength" && <p className="text-red-400" role="alert">Email can&apos;t be shorter than 5 characters.</p>}
+                {errors.email?.type === "pattern" && <p className="text-red-400" role="alert">Email is invalid.</p>}
             </div>
 
             <div className="block mb-5">
@@ -85,8 +85,8 @@ export const CommentForm = ({ _id }: any) => {
                     className="form-textarea mt-1 block w-full" rows={8}
                     aria-invalid={errors.comment ? "true" : "false"}
                 ></textarea>
-                {errors.comment?.type === "required" && <p role="alert">Comment can&apos;t be empty.</p>}
-                {errors.comment?.type === "maxLength" && <p role="alert">Comment can&apos;t be longer than 1024 characters.</p>}
+                {errors.comment?.type === "required" && <p className="text-red-400" role="alert">Comment can&apos;t be empty.</p>}
+                {errors.comment?.type === "maxLength" && <p className="text-red-400" role="alert">Comment can&apos;t be longer than 1024 characters.</p>}
             </div>
 
             <input type="submit" className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" />
