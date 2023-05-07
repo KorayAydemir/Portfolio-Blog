@@ -24,22 +24,15 @@ export default async function createComment(req: NextApiRequest, res: NextApiRes
         // Use our Client to create a new document in Sanity with an object  
         const response = await verifyRecaptcha(token)
         console.log(response)
-        if (response.data.success && response.data.score >= 0.5) {
-            await previewClient.create({
-                _type: 'comment',
-                post: register,
-                name,
-                email,
-                comment
-            })
-            return res.status(200).json({ status: "Success", message: "Comment submitted" })
-        }
-        else {
-            return res.json({
-                status: "Failed",
-                message: "Something went wrong, please try again!"
-            })
-        }
+        await previewClient.create({
+            _type: 'comment',
+            post: register,
+            name,
+            email,
+            comment
+        })
+        return res.status(200).json({ status: "Success", message: "Comment submitted" })
+
     } catch (err) {
         console.error(err)
         return res.status(500).json({ message: `Couldn't submit comment`, err })
