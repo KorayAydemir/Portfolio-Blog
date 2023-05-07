@@ -38,14 +38,17 @@ export const CommentForm = ({ _id }: any) => {
     }
 
     const onSubmit = async (data: any) => {
+        if (!executeRecaptcha) { console.log("could not execute recaptcha"); return; }
         setIsSubmitting(true)
-
         setFormData(data)
 
         try {
+            const token = await executeRecaptcha();
+            console.log(token)
+            if (!token) { console.log("failed to send"); return; }
             await fetch('/api/createComment', {
                 method: 'POST',
-                body: JSON.stringify(data),
+                body: JSON.stringify({ ...data, token }),
             })
             setIsSubmitting(false)
             setHasSubmitted(true)
