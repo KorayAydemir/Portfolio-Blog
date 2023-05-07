@@ -19,8 +19,7 @@ const verifyRecaptcha = async (token: string) => {
 export default async function createComment(req: NextApiRequest, res: NextApiResponse) {
     // Destructure the pieces of our request
     const { register, name, email, comment } = JSON.parse(req.body)
-    const token = req.headers.authorization!
-    console.log(token)
+    const { token } = JSON.parse(req.headers.authorization!)
     try {
         // Use our Client to create a new document in Sanity with an object  
         const response = await verifyRecaptcha(token)
