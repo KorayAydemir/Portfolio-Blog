@@ -11,9 +11,10 @@ const verifyRecaptcha = async (token: string) => {
         "&response=" +
         token;
 
-    const response = await fetch(verificationUrl, { method: "POST" })
-    return await response.json();
+    const response: any = await fetch(verificationUrl, { method: "POST" })
+    return response
 }
+
 
 export default async function createComment(req: NextApiRequest, res: NextApiResponse) {
     // Destructure the pieces of our request
