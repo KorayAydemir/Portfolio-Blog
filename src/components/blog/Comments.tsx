@@ -6,7 +6,8 @@ export const Comments = ({ comments = [] }) => {
                 {comments?.map(({ _id, _createdAt, name, comment }: any) => (
                     <li key={_id} className="mb-5">
                         <hr className="mb-5" />
-                        <h4 className="mb-2 leading-tight"><span>{name}</span>
+                        <h4 className="mb-2 leading-tight">
+                            <span>{name}</span>
                             <br /> <time dateTime={_createdAt}>
                                 {_createdAt.split("T")[0]}
                             </time>
