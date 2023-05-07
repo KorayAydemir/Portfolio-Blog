@@ -20,7 +20,7 @@ export default async function createComment(req: any, res: any) {
     const { register, name, email, comment, token } = JSON.parse(req.body)
     try {
         const response = await verifyRecaptcha(token);
-        console.log(response)
+        console.log(response?.data?.success, response?.data?.score)
         if (response?.data?.success && response?.data?.score >= 0.5) {
             // Use our Client to create a new document in Sanity with an object  
             await previewClient.create({
