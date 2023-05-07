@@ -19,10 +19,11 @@ export default async function createComment(req: NextApiRequest, res: NextApiRes
     // Destructure the pieces of our request
     const { register, name, email, comment } = JSON.parse(req.body)
     const token = req.headers.authorization!
+    console.log(token)
     try {
         // Use our Client to create a new document in Sanity with an object  
-        console.log(token)
         const response = await verifyRecaptcha(token)
+        console.log(response)
         if (response.data.success && response.data.score >= 0.5) {
             await previewClient.create({
                 _type: 'comment',
