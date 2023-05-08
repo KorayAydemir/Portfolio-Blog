@@ -15,9 +15,14 @@ body {
   max-height: 100vh;
 }
 
-/*@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.grecaptcha-badge { 
+    visibility: hidden;
+}
+
+@layer base {
+  a {
+    @apply dark:text-sky-400 text-blue-800;
   }
-}*/
+}
+
 
