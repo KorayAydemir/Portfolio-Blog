@@ -35,6 +35,7 @@ export default function Home({ posts }: any) {
 
     let desc =
         "Hi, my name is Koray. I'm a software developer based in Istanbul/Türkiye.";
+
     return (
         <>
             <Head>
@@ -42,6 +43,13 @@ export default function Home({ posts }: any) {
                 <meta name="description" content={desc} />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
+
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:creator" content="@Korayzzzzz" />
+                <meta property="og:title" content="Koray Aydemir" />
+                <meta property="og:description" content={desc} />
+                <meta property="og:url" content="https://korayaydemir.dev" />
+                <meta property="og:image" content="https://m.media-amazon.com/images/M/MV5BMTQ5MzkzNTIyN15BMl5BanBnXkFtZTYwNzUzOTA2._V1_FMjpg_UX1000_.jpg" />
             </Head>
 
             <div className="flex justify-end mt-4 mr-4">
