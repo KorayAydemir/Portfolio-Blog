@@ -4,48 +4,49 @@ import { useGlitch } from "react-powerglitch";
 import { LinkOrDiv } from "../shared/LinkOrDiv";
 
 interface Props {
-  img: StaticImageData;
-  alt: string;
-  fields: { name: string, Icon: IconType, link?: string }[]
+    img: StaticImageData;
+    alt: string;
+    priority: boolean;
+    fields: { name: string, Icon: IconType, link?: string }[]
 }
 
 export default function Project(props: Props) {
-  const alwaysGlitch = useGlitch({
-    playMode: "hover",
-    timing: { duration: 950, easing: "ease-in-out" },
-    glitchTimeSpan: { start: 0, end: 0.5 },
-    shake: false,
-    slice: {
-      count: 25,
-      velocity: 15,
-      minHeight: 0.02,
-      maxHeight: 0.15,
-      hueRotate: true,
-    },
-  });
+    const alwaysGlitch = useGlitch({
+        playMode: "hover",
+        timing: { duration: 950, easing: "ease-in-out" },
+        glitchTimeSpan: { start: 0, end: 0.5 },
+        shake: false,
+        slice: {
+            count: 25,
+            velocity: 15,
+            minHeight: 0.02,
+            maxHeight: 0.15,
+            hueRotate: true,
+        },
+    });
 
 
-  const fields = props.fields.map((field, i) => {
-    const { name, Icon, link } = field;
+    const fields = props.fields.map((field, i) => {
+        const { name, Icon, link } = field;
+        return (
+            <LinkOrDiv href={link!} className="px-3 py-0.5 flex-1 flex border-solid rounded border-2 dark:border-slate-400 border-gray-800" key={i}>
+                <Icon className="block my-auto text-xl" />
+                <span className="font-bold text-base ml-1.5">{name}</span>
+            </LinkOrDiv>
+        )
+    });
+
     return (
-      <LinkOrDiv href={link!} className="px-3 py-0.5 flex-1 flex border-solid rounded border-2 dark:border-slate-400 border-gray-800" key={i}>
-        <Icon className="block my-auto text-xl" />
-        <span className="font-bold text-base ml-1.5">{name}</span>
-      </LinkOrDiv>
-    )
-  });
+        <div>
+            <Image
+                ref={alwaysGlitch.ref}
+                src={props.img}
+                alt={props.alt}
+                priority={props.priority}
+                className="w-[1200px] rounded-lg animate-slowfadein"
+            />
 
-  return (
-    <div>
-      <Image
-        ref={alwaysGlitch.ref}
-        loading="eager"
-        src={props.img}
-        alt={props.alt}
-        className="w-[1200px] rounded-lg animate-slowfadein"
-      />
-
-      <div className="flex flex-wrap gap-2 mt-4">{fields}</div>
-    </div>
-  );
+            <div className="flex flex-wrap gap-2 mt-4">{fields}</div>
+        </div>
+    );
 }
