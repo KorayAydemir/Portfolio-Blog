@@ -4,7 +4,7 @@ let h1p2 = "linux hobbyist";
 import MyProjects from "./MyProjects";
 import Contact from "./Contact";
 
-export const IntroText = ({ desc, showPageHandler }: { desc: string, showPageHandler: Function }) => {
+export const IntroText = ({ desc }: { desc: string }) => {
     return (
         <>
             <noscript>
@@ -45,9 +45,6 @@ export const IntroText = ({ desc, showPageHandler }: { desc: string, showPageHan
                             typewriter
                                 .changeDelay(1)
                                 .typeString(desc)
-                                .callFunction(() => {
-                                    showPageHandler();
-                                })
                                 .start();
                         }}
                         options={{

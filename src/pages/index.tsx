@@ -28,10 +28,6 @@ import { LatestPosts } from "@component/components/home/LatestPosts";
 
 export default function Home({ posts }: any) {
     // show rest of the page when text loads
-    const [showPage, setShowPage] = useState(true);
-    const showPageHandler = () => {
-        setShowPage(true)
-    }
 
     let desc =
         "Hi, my name is Koray. I'm a software developer based in Istanbul/Türkiye.";
@@ -57,77 +53,72 @@ export default function Home({ posts }: any) {
             </div>
 
             <Layout>
-                <IntroText desc={desc} showPageHandler={showPageHandler} />
+                <IntroText desc={desc} />
+                <section>
+                    <LatestPosts posts={posts} />
+                </section>
 
-                {showPage ? (
-                    <>
-                        <section>
-                            <LatestPosts posts={posts} />
-                        </section>
+                <section className="mt-4">
+                    <MyProjects />
+                </section>
 
-                        <section className="mt-4">
-                            <MyProjects />
-                        </section>
+                <section className="space-y-6 mt-8">
+                    <h2 className=" text-xl font-bold text-center">Skills</h2>
+                    <Skill
+                        fields={[
+                            {
+                                name: "NextJs",
+                                Icon: TbBrandNextjs,
+                            },
+                            {
+                                name: "ReactJs",
+                                Icon: SiReact,
+                            },
+                            {
+                                name: "JavaScript",
+                                Icon: SiJavascript,
+                            },
+                            {
+                                name: "TypeScript",
+                                Icon: SiTypescript,
+                            },
+                            {
+                                name: "Node.js",
+                                Icon: FaNodeJs,
+                            },
+                            {
+                                name: "Rust",
+                                Icon: FaRust,
+                            },
+                            {
+                                name: "PostgreSQL",
+                                Icon: SiPostgresql,
+                            },
+                            {
+                                name: "Bash",
+                                Icon: VscTerminalBash,
+                            },
+                            {
+                                name: "HTML/CSS",
+                                Icon: SiHtml5,
+                            },
+                        ]}
+                    />
 
-                        <section className="space-y-6 mt-8">
-                            <h2 className=" text-xl font-bold text-center">Skills</h2>
-                            <Skill
-                                fields={[
-                                    {
-                                        name: "NextJs",
-                                        Icon: TbBrandNextjs,
-                                    },
-                                    {
-                                        name: "ReactJs",
-                                        Icon: SiReact,
-                                    },
-                                    {
-                                        name: "JavaScript",
-                                        Icon: SiJavascript,
-                                    },
-                                    {
-                                        name: "TypeScript",
-                                        Icon: SiTypescript,
-                                    },
-                                    {
-                                        name: "Node.js",
-                                        Icon: FaNodeJs,
-                                    },
-                                    {
-                                        name: "Rust",
-                                        Icon: FaRust,
-                                    },
-                                    {
-                                        name: "PostgreSQL",
-                                        Icon: SiPostgresql,
-                                    },
-                                    {
-                                        name: "Bash",
-                                        Icon: VscTerminalBash,
-                                    },
-                                    {
-                                        name: "HTML/CSS",
-                                        Icon: SiHtml5,
-                                    },
-                                ]}
-                            />
+                    <h2 className="mt-4 text-xl font-bold text-center">Tools</h2>
+                    <Skill
+                        fields={[
+                            { name: "Vim", Icon: SiVim },
+                            { name: "Docker", Icon: SiDocker },
+                            { name: "Tmux", Icon: SiTmux },
+                            { name: "Git", Icon: SiGit }
+                        ]}
+                    />
+                </section>
 
-                            <h2 className="mt-4 text-xl font-bold text-center">Tools</h2>
-                            <Skill
-                                fields={[
-                                    { name: "Vim", Icon: SiVim },
-                                    { name: "Docker", Icon: SiDocker },
-                                    { name: "Tmux", Icon: SiTmux },
-                                    { name: "Git", Icon: SiGit }
-                                ]}
-                            />
-                        </section>
-
-                        <section>
-                            <Contact />
-                        </section>
-                    </>
-                ) : null}
+                <section>
+                    <Contact />
+                </section>
             </Layout>
         </>
     );
