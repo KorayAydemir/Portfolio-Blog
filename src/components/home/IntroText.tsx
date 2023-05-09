@@ -20,7 +20,7 @@ export const IntroText = ({ desc, showPageHandler }: { desc: string, showPageHan
                 <Contact />
             </noscript>
 
-            <section className="">
+            <section className="min-h-[160px]">
                 <h1 className="text-center font-bold text-2xl">
                     <Typewriter
                         onInit={(typewriter) => {
