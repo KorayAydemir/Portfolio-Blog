@@ -28,7 +28,7 @@ import { LatestPosts } from "@component/components/home/LatestPosts";
 
 export default function Home({ posts }: any) {
     // show rest of the page when text loads
-    const [showPage, setShowPage] = useState(false);
+    const [showPage, setShowPage] = useState(true);
     const showPageHandler = () => {
         setShowPage(true)
     }

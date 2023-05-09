@@ -20,30 +20,30 @@ export const IntroText = ({ desc, showPageHandler }: { desc: string, showPageHan
                 <Contact />
             </noscript>
 
-            <section>
+            <section className="">
                 <h1 className="text-center font-bold text-2xl">
                     <Typewriter
                         onInit={(typewriter) => {
                             typewriter
-                                .changeDelay(18)
+                                .changeDelay(16)
                                 .typeString(h1)
-                                .pauseFor(580)
+                                .pauseFor(280)
                                 .typeString(h1p2)
                                 .start();
                         }}
                         options={{
-                            cursor: "T",
+                            cursor: "",
                             cursorClassName:
-                                "bg-neutral-900 text-neutral-900 dark:bg-white dark:text-white Typewriter__cursor",
+                                "px-[7.3px] bg-neutral-900 text-neutral-900 dark:bg-white dark:text-white Typewriter__cursor",
                         }}
                     />
                 </h1>
 
-                <h2 className="mt-4 text-center text-xl">
+                <h2 className="mt-4 text-center text-xl h-20 mb-4">
                     <Typewriter
                         onInit={(typewriter) => {
                             typewriter
-                                .changeDelay(16)
+                                .changeDelay(1)
                                 .typeString(desc)
                                 .callFunction(() => {
                                     showPageHandler();
@@ -57,7 +57,6 @@ export const IntroText = ({ desc, showPageHandler }: { desc: string, showPageHan
                         }}
                     />
                 </h2>
-
             </section>
         </>
     )
