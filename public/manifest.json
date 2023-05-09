@@ -8,27 +8,27 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/vercel.svg",
+      "src": "/favicon.ico",
       "type": "image/png",
       "sizes": "72x72"
     },
     {
-      "src": "/vercel.svg",
+      "src": "/favicon.ico",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "/vercel.svg",
+      "src": "/favicon.ico",
       "type": "image/png",
       "sizes": "128x128"
     },
     {
-      "src": "/vercel.svg",
+      "src": "/favicon.ico",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/vercel.svg",
+      "src": "/favicon.ico",
       "type": "image/png",
       "sizes": "512x512"
     }
