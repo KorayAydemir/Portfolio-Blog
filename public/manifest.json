@@ -1,0 +1,36 @@
+{
+  "name": "Koray Aydemir Blog Site",
+  "short_name": "Koray's Blog",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vercel.svg",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "/vercel.svg",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/vercel.svg",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/vercel.svg",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/vercel.svg",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
