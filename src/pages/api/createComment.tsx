@@ -1,5 +1,5 @@
 // This Next.js template already is configured to write with this Sanity Client
-import { previewClient } from 'lib/sanity.tsx'
+import { writeClient } from 'lib/sanity.tsx'
 
 const verifyRecaptcha = async (token: any) => {
     const secretKey = process.env.RECAPTHA_SECRET_KEY;
@@ -22,7 +22,7 @@ export default async function createComment(req: any, res: any) {
         const response = await verifyRecaptcha(token);
         if (response?.success && response?.score >= 0.5) {
             // Use our Client to create a new document in Sanity with an object  
-            await previewClient.create({
+            await writeClient.create({
                 _type: 'comment',
                 post: register,
                 name,

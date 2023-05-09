@@ -1,5 +1,4 @@
 import { createClient } from '@sanity/client'
-import sanityImage from '@sanity/image-url'
 
 const options = {
     // Find your project ID and dataset in `sanity.json` in your studio project
@@ -15,11 +14,8 @@ const options = {
 
 const client = createClient(options)
 
-export const imageBuilder = (source: any) => sanityImage(client).image(source)
-
-export const previewClient = createClient({
+export const writeClient = createClient({
     ...options,
-    useCdn: false,
     token: process.env.SANITY_API_TOKEN,
     apiVersion: "2023-05-07"
 })
