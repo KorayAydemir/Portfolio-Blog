@@ -7,7 +7,7 @@ interface Props {
     img: StaticImageData;
     alt: string;
     priority: boolean;
-    fields: { name: string, Icon: IconType, link?: string }[]
+    fields: { name: string; Icon: IconType; link?: string }[];
 }
 
 export default function Project(props: Props) {
@@ -25,15 +25,18 @@ export default function Project(props: Props) {
         },
     });
 
-
     const fields = props.fields.map((field, i) => {
         const { name, Icon, link } = field;
         return (
-            <LinkOrDiv href={link!} className="px-3 py-0.5 flex-1 flex border-solid rounded border-2 dark:border-slate-400 border-gray-800" key={i}>
+            <LinkOrDiv
+                href={link!}
+                className="px-3 py-0.5 flex-1 flex border-solid rounded border-2 dark:border-slate-400 border-gray-800"
+                key={i}
+            >
                 <Icon className="block my-auto text-xl" />
                 <span className="font-bold text-base ml-1.5">{name}</span>
             </LinkOrDiv>
-        )
+        );
     });
 
     return (

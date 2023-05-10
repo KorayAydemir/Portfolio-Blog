@@ -3,10 +3,7 @@ import ToggleTheme from "@component/components/shared/ToggleTheme";
 import Layout from "@component/components/shared/layout";
 import Head from "next/head";
 import { useState } from "react";
-import {
-    FaNodeJs,
-    FaRust,
-} from "react-icons/fa";
+import { FaNodeJs, FaRust } from "react-icons/fa";
 import {
     SiDocker,
     SiGit,
@@ -22,7 +19,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { VscTerminalBash } from "react-icons/vsc";
 import { Skill } from "@component/components/home/Skill";
 import Contact from "@component/components/home/Contact";
-import { client } from "../../tina/__generated__/client"
+import { client } from "../../tina/__generated__/client";
 import { IntroText } from "@component/components/home/IntroText";
 import { LatestPosts } from "@component/components/home/LatestPosts";
 
@@ -37,7 +34,10 @@ export default function Home({ posts }: any) {
             <Head>
                 <title>Koray Aydemir</title>
                 <meta name="description" content={desc} />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
                 <link rel="icon" href="/favicon.ico" />
 
                 <meta name="twitter:card" content="summary" />
@@ -45,7 +45,10 @@ export default function Home({ posts }: any) {
                 <meta property="og:title" content="Koray Aydemir" />
                 <meta property="og:description" content={desc} />
                 <meta property="og:url" content="https://korayaydemir.dev" />
-                <meta property="og:image" content="https://m.media-amazon.com/images/M/MV5BMTQ5MzkzNTIyN15BMl5BanBnXkFtZTYwNzUzOTA2._V1_FMjpg_UX1000_.jpg" />
+                <meta
+                    property="og:image"
+                    content="https://m.media-amazon.com/images/M/MV5BMTQ5MzkzNTIyN15BMl5BanBnXkFtZTYwNzUzOTA2._V1_FMjpg_UX1000_.jpg"
+                />
             </Head>
 
             <div className="flex justify-end mt-4 mr-4">
@@ -105,13 +108,15 @@ export default function Home({ posts }: any) {
                         ]}
                     />
 
-                    <h2 className="mt-4 text-xl font-bold text-center">Tools</h2>
+                    <h2 className="mt-4 text-xl font-bold text-center">
+                        Tools
+                    </h2>
                     <Skill
                         fields={[
                             { name: "Vim", Icon: SiVim },
                             { name: "Docker", Icon: SiDocker },
                             { name: "Tmux", Icon: SiTmux },
-                            { name: "Git", Icon: SiGit }
+                            { name: "Git", Icon: SiGit },
                         ]}
                     />
                 </section>
@@ -125,14 +130,14 @@ export default function Home({ posts }: any) {
 }
 
 export const getStaticProps = async () => {
-    const postsResponse = await client.queries.postConnection()
+    const postsResponse = await client.queries.postConnection();
     const posts = postsResponse.data.postConnection.edges?.map((post) => {
-        return post?.node
-    })
+        return post?.node;
+    });
 
     return {
         props: {
-            posts
+            posts,
         },
     };
-}
+};

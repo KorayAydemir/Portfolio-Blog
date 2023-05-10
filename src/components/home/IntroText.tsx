@@ -1,4 +1,4 @@
-import Typewriter from "typewriter-effect"
+import Typewriter from "typewriter-effect";
 let h1 = "Full-stack web developer, ";
 let h1p2 = "linux hobbyist";
 import MyProjects from "./MyProjects";
@@ -42,10 +42,7 @@ export const IntroText = ({ desc }: { desc: string }) => {
                 <h2 className="mt-4 text-center text-xl h-20 mb-4">
                     <Typewriter
                         onInit={(typewriter) => {
-                            typewriter
-                                .changeDelay(1)
-                                .typeString(desc)
-                                .start();
+                            typewriter.changeDelay(1).typeString(desc).start();
                         }}
                         options={{
                             cursor: "",
@@ -56,5 +53,5 @@ export const IntroText = ({ desc }: { desc: string }) => {
                 </h2>
             </section>
         </>
-    )
-}
+    );
+};

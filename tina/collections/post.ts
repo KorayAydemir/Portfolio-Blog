@@ -1,5 +1,5 @@
-import { Document } from "tina/__generated__/types"
-import { Collection } from "tinacms"
+import { Document } from "tina/__generated__/types";
+import { Collection } from "tinacms";
 
 export const Post: Collection = {
     name: "post",
@@ -29,9 +29,9 @@ export const Post: Collection = {
             required: true,
         },
         {
-            label: 'Tags',
-            name: 'tags',
-            type: 'string',
+            label: "Tags",
+            name: "tags",
+            type: "string",
             list: true,
             required: true,
         },
@@ -47,5 +47,4 @@ export const Post: Collection = {
         // This is an DEMO router. You can remove this to fit your site
         router: ({ document }) => `/blog/${document._sys?.filename}`,
     },
-}
-
+};

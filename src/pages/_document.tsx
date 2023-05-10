@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
     return (
@@ -8,13 +8,17 @@ export default function Document() {
             <meta name="theme-color" content="#fff" />
             <Head>
                 <noscript>
-                    <link rel="stylesheet" type="text/css" href="/noscript.css" />
+                    <link
+                        rel="stylesheet"
+                        type="text/css"
+                        href="/noscript.css"
+                    />
                 </noscript>
             </Head>
-            <body className='bg-[#dee4e7] dark:bg-black'>
+            <body className="bg-[#dee4e7] dark:bg-black">
                 <Main />
                 <NextScript />
             </body>
         </Html>
-    )
+    );
 }

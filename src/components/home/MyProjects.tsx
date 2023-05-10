@@ -11,7 +11,7 @@ import {
 import { TbBrandNextjs } from "react-icons/tb";
 import { FaGithub } from "react-icons/fa";
 
-import { FcLikePlaceholder } from "react-icons/fc"
+import { FcLikePlaceholder } from "react-icons/fc";
 
 export default function MyProjects() {
     return (
@@ -55,7 +55,11 @@ export default function MyProjects() {
                         { name: "ShellScript", Icon: SiGnubash },
                         { name: "Arch", Icon: SiArchlinux },
                         { name: "Neovim", Icon: SiNeovim },
-                        { name: "Github", Icon: FaGithub, link: "https://github.com/KorayAydemir/Dots" },
+                        {
+                            name: "Github",
+                            Icon: FaGithub,
+                            link: "https://github.com/KorayAydemir/Dots",
+                        },
                     ]}
                 />
 
@@ -63,11 +67,16 @@ export default function MyProjects() {
                     priority={false}
                     img={This}
                     alt="this-portfolio"
-                    fields={[{ name: "NextJS", Icon: TbBrandNextjs },
-                    { name: "TinaCMS", Icon: FcLikePlaceholder },
-                    { name: "Tailwind", Icon: SiTailwindcss },
-                    { name: "TypeScript", Icon: SiTypescript },
-                    { name: "GitHub", Icon: FaGithub, link: "https://github.com/KorayAydemir/NextLearn" },
+                    fields={[
+                        { name: "NextJS", Icon: TbBrandNextjs },
+                        { name: "TinaCMS", Icon: FcLikePlaceholder },
+                        { name: "Tailwind", Icon: SiTailwindcss },
+                        { name: "TypeScript", Icon: SiTypescript },
+                        {
+                            name: "GitHub",
+                            Icon: FaGithub,
+                            link: "https://github.com/KorayAydemir/NextLearn",
+                        },
                     ]}
                 />
             </div>
