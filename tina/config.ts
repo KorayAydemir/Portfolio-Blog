@@ -1,4 +1,4 @@
-import { defineConfig } from "tinacms";
+import { defineConfig, defineSchema } from "tinacms";
 import { Post } from "./collections/post";
 
 // Your hosting provider likely exposes this as an environment variable
@@ -21,5 +21,5 @@ export default defineConfig({
     },
     schema: {
         collections: [Post],
-    },
+    }
 });

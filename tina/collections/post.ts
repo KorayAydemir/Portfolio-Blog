@@ -1,5 +1,5 @@
-import { Document } from "tina/__generated__/types";
 import { Collection } from "tinacms";
+
 
 export const Post: Collection = {
     name: "post",
