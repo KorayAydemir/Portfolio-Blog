@@ -2,7 +2,6 @@ import MyProjects from "@component/components/home/MyProjects";
 import ToggleTheme from "@component/components/shared/ToggleTheme";
 import Layout from "@component/components/shared/layout";
 import Head from "next/head";
-import { useState } from "react";
 import { FaNodeJs, FaRust } from "react-icons/fa";
 import {
     SiDocker,
@@ -24,8 +23,6 @@ import { IntroText } from "@component/components/home/IntroText";
 import { LatestPosts } from "@component/components/home/LatestPosts";
 
 export default function Home({ posts }: any) {
-    // show rest of the page when text loads
-
     let desc =
         "Hi, my name is Koray. I'm a software developer based in Istanbul/Türkiye.";
 

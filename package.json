@@ -6,7 +6,8 @@
         "dev": "tinacms dev -c \"next dev\"",
         "build": "tinacms build && next build",
         "start": "tinacms build && next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "postbuild": "next-sitemap"
     },
     "dependencies": {
         "@portabletext/react": "^2.0.3",
@@ -21,6 +22,7 @@
         "eslint-config-next": "13.2.4",
         "next": "13.2.4",
         "next-sanity": "^4.1.7",
+        "next-sitemap": "^4.0.9",
         "next-themes": "^0.2.1",
         "react": "18.2.0",
         "react-dom": "18.2.0",
