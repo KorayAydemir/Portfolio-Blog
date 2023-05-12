@@ -1,5 +1,5 @@
-// This Next.js template already is configured to write with this Sanity Client
 import { writeClient } from "lib/sanity.tsx";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const verifyRecaptcha = async (token: any) => {
     const secretKey = process.env.RECAPTHA_SECRET_KEY;
@@ -20,12 +20,15 @@ const verifyRecaptcha = async (token: any) => {
         });
 };
 
-export default async function createComment(req: any, res: any) {
+export default async function createComment(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
     // Destructure the pieces of our request
     const { register, name, email, comment, token } = JSON.parse(req.body);
     try {
         const response = await verifyRecaptcha(token);
-        if (response?.success && response?.score >= 0.5) {
+        if (response.success && response.score >= 0.5) {
             // Use our Client to create a new document in Sanity with an object
             await writeClient.create({
                 _type: "comment",
@@ -46,6 +49,4 @@ export default async function createComment(req: any, res: any) {
         console.error(err);
         return res.status(500).json({ message: `Couldn't submit comment` });
     }
-
-    //return res.status(200).json({ message: 'Comment submitted' })
 }
