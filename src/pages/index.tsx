@@ -22,7 +22,6 @@ import { IntroText } from "@component/components/home/IntroText";
 import { LatestPosts } from "@component/components/home/LatestPosts";
 import { client } from "../../tina/__generated__/client";
 import Head from "next/head";
-import { PostConnectionQuery, Post, PostQuery } from "tina/__generated__/types";
 
 export default function Home({ posts }: any) {
     let desc =
@@ -135,8 +134,8 @@ export default function Home({ posts }: any) {
 }
 
 export const getStaticProps = async () => {
-    const postsResponse = await client.queries.postConnection();
-    const posts = postsResponse.data.postConnection.edges?.map((post) => {
+    const postsResponse = await client.queries.postsConnection();
+    const posts = postsResponse.data.postsConnection.edges?.map((post) => {
         return post?.node;
     });
 
