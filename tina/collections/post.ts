@@ -1,8 +1,7 @@
 import { Collection } from "tinacms";
 
-
-export const Post: Collection = {
-    name: "post",
+export const Posts: Collection = {
+    name: "posts",
     label: "Posts",
     path: "content/posts",
     fields: [

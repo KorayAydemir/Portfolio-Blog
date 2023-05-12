@@ -1,7 +1,3 @@
-import MyProjects from "@component/components/home/MyProjects";
-import ToggleTheme from "@component/components/shared/ToggleTheme";
-import Layout from "@component/components/shared/layout";
-import Head from "next/head";
 import { FaNodeJs, FaRust } from "react-icons/fa";
 import {
     SiDocker,
@@ -16,15 +12,22 @@ import {
 } from "react-icons/si";
 import { TbBrandNextjs } from "react-icons/tb";
 import { VscTerminalBash } from "react-icons/vsc";
+
+import ToggleTheme from "@component/components/shared/ToggleTheme";
+import Layout from "@component/components/shared/layout";
+import MyProjects from "@component/components/home/MyProjects";
 import { Skill } from "@component/components/home/Skill";
 import Contact from "@component/components/home/Contact";
-import { client } from "../../tina/__generated__/client";
 import { IntroText } from "@component/components/home/IntroText";
 import { LatestPosts } from "@component/components/home/LatestPosts";
+import { client } from "../../tina/__generated__/client";
+import Head from "next/head";
+import { PostConnectionQuery, Post, PostQuery } from "tina/__generated__/types";
 
 export default function Home({ posts }: any) {
     let desc =
         "Hi, my name is Koray. I'm a software developer based in Istanbul/Türkiye.";
+    console.log(posts);
 
     return (
         <>
@@ -55,7 +58,12 @@ export default function Home({ posts }: any) {
             <Layout>
                 <IntroText desc={desc} />
                 <section>
-                    <LatestPosts posts={posts} />
+                    <LatestPosts
+                        posts={posts?.map((post) => ({
+                            date: post?.date,
+                            title: post?.title,
+                        }))}
+                    />
                 </section>
 
                 <section className="mt-4">

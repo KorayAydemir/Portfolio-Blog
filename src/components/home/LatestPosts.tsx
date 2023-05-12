@@ -4,7 +4,9 @@ import { FaArrowRight } from "react-icons/fa";
 export const LatestPosts = ({
     posts,
 }: {
-    posts: { date: string; title: string }[];
+    posts:
+        | { date: string | undefined; title: string | undefined }[]
+        | undefined;
 }) => {
     let latestPosts = [];
     for (let i = 0; i < 3; i++) {
