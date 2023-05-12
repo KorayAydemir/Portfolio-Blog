@@ -1,13 +1,9 @@
+import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import Typewriter from "typewriter-effect";
-import { FaArrowRight } from "react-icons/fa";
-export const LatestPosts = ({
-    posts,
-}: {
-    posts:
-        | { date: string | undefined; title: string | undefined }[]
-        | undefined;
-}) => {
+import { Posts } from "tina/__generated__/types";
+
+export const LatestPosts = ({ posts }: { posts: Posts[] }) => {
     let latestPosts = [];
     for (let i = 0; i < 3; i++) {
         if (posts[i] !== undefined) {

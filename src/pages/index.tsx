@@ -13,6 +13,10 @@ import {
 import { TbBrandNextjs } from "react-icons/tb";
 import { VscTerminalBash } from "react-icons/vsc";
 
+import Head from "next/head";
+import { fetchPosts } from "data-api/fetchPosts";
+import { Posts } from "tina/__generated__/types";
+
 import ToggleTheme from "@component/components/shared/ToggleTheme";
 import Layout from "@component/components/shared/layout";
 import MyProjects from "@component/components/home/MyProjects";
@@ -20,13 +24,10 @@ import { Skill } from "@component/components/home/Skill";
 import Contact from "@component/components/home/Contact";
 import { IntroText } from "@component/components/home/IntroText";
 import { LatestPosts } from "@component/components/home/LatestPosts";
-import { client } from "../../tina/__generated__/client";
-import Head from "next/head";
 
-export default function Home({ posts }: any) {
+export default function Home({ posts }: { posts: Posts[] }) {
     let desc =
         "Hi, my name is Koray. I'm a software developer based in Istanbul/Türkiye.";
-    console.log(posts);
 
     return (
         <>
@@ -57,12 +58,7 @@ export default function Home({ posts }: any) {
             <Layout>
                 <IntroText desc={desc} />
                 <section>
-                    <LatestPosts
-                        posts={posts?.map((post) => ({
-                            date: post?.date,
-                            title: post?.title,
-                        }))}
-                    />
+                    <LatestPosts posts={posts} />
                 </section>
 
                 <section className="mt-4">
@@ -134,10 +130,7 @@ export default function Home({ posts }: any) {
 }
 
 export const getStaticProps = async () => {
-    const postsResponse = await client.queries.postsConnection();
-    const posts = postsResponse.data.postsConnection.edges?.map((post) => {
-        return post?.node;
-    });
+    const posts = await fetchPosts();
 
     return {
         props: {

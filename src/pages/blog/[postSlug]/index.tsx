@@ -1,25 +1,30 @@
-import { useTina } from "tinacms/dist/react";
+import Head from "next/head";
 import client from "tina/__generated__/client";
+import { createClient } from "next-sanity";
+import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import ToggleTheme from "@component/components/shared/ToggleTheme";
 import WideLayout from "@component/components/shared/layout_wide";
 import { CommentForm } from "@component/components/blog/CommentForm";
 import { Comments } from "@component/components/blog/Comments";
-import { createClient } from "next-sanity";
-import Head from "next/head";
+import { fetchPostsPaths } from "data-api/fetchPosts";
 
-export default function Post(props: any) {
+import { InferGetStaticPropsType } from "next";
+
+export default function Post(props: InferGetStaticPropsType<typeof getStaticProps> ) {
     const { data } = useTina({
-        query: props.tina.query,
-        variables: props.tina.variables,
-        data: props.tina.data,
+        query: props.query,
+        variables: props.variables,
+        data: props.data,
     });
+
+    const {summary, title, date, body, _sys} = data.posts
 
     return (
         <>
             <Head>
                 <title>Blog - Koray Aydemir</title>
-                <meta name="description" content={data.post.summary} />
+                <meta name="description" content={summary} />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"
@@ -42,28 +47,28 @@ export default function Post(props: any) {
                                         </dt>
                                         <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                                             <time dateTime="2021-08-07T15:32:14.000Z">
-                                                {data.post.date?.split("T")[0]}
+                                                {date?.split("T")[0]}
                                             </time>
                                         </dd>
                                     </div>
                                 </dl>
                                 <div>
                                     <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
-                                        {data.post.title}
+                                        {title}
                                     </h1>
                                 </div>
                             </div>
                         </header>
                         <div className="prose prose-slate prose-lg dark:prose-invert dark:prose-pre:bg-white dark:prose-pre:text-neutral-800">
                             <TinaMarkdown
-                                content={data.post.body}
+                                content={body}
                             ></TinaMarkdown>
                         </div>
                     </div>
 
                     <div className="mt-28">
                         <Comments comments={props.comments} />
-                        <CommentForm _id={data.post._sys.filename} />
+                        <CommentForm _id={_sys.filename} />
                     </div>
                 </main>
             </WideLayout>
@@ -72,10 +77,7 @@ export default function Post(props: any) {
 }
 
 export const getStaticPaths = async () => {
-    const { data } = await client.queries.postConnection();
-    const paths = data.postConnection.edges?.map((post) => {
-        return { params: { postSlug: post?.node?._sys.filename } };
-    });
+    const paths = await fetchPostsPaths();
 
     return {
         paths,
@@ -83,8 +85,9 @@ export const getStaticPaths = async () => {
     };
 };
 
-export const getStaticProps = async (ctx: any) => {
-    const { data, query, variables } = await client.queries.post({
+
+export const getStaticProps = async (ctx: {params: {postSlug: string}} ) => {
+    const { data, query, variables } = await client.queries.posts({
         relativePath: ctx.params.postSlug + ".md",
     });
 
@@ -94,11 +97,9 @@ export const getStaticProps = async (ctx: any) => {
 
     return {
         props: {
-            tina: {
                 data,
                 query,
                 variables,
-            },
             comments,
         },
     };

@@ -1,20 +1,15 @@
 import ToggleTheme from "@component/components/shared/ToggleTheme";
 import WideLayout from "@component/components/shared/layout_wide";
+import { fetchPosts } from "data-api/fetchPosts";
 import Head from "next/head";
 import Link from "next/link";
-import client from "tina/__generated__/client";
-
-interface Post {
-    title: string;
-    tags: string[];
-    date: string;
-    summary: string;
-    _sys: { filename: string };
-}
+import { Posts } from "tina/__generated__/types";
 
 let desc =
     "Hi, my name is Koray. I'm a software developer based in Istanbul/Türkiye. Welcome to my personal blog.";
-export default function Blog({ posts }: { posts: Post[] }) {
+
+type PostPreviews = Omit<Posts, "id" | "_values" | "body">;
+export default function Blog({ posts }: { posts: PostPreviews[] }) {
     return (
         <>
             <Head>
@@ -52,10 +47,10 @@ export default function Blog({ posts }: { posts: Post[] }) {
     );
 }
 
-function PostsList({ posts }: { posts: Post[] }) {
+function PostsList({ posts }: { posts: PostPreviews[] }) {
     return (
         <>
-            {posts.map((post: Post) => {
+            {posts.map((post) => {
                 return (
                     <Post
                         key={post.title}
@@ -71,8 +66,8 @@ function PostsList({ posts }: { posts: Post[] }) {
     );
 }
 
-function Post({ title, date, summary, tags, _sys }: Post) {
-    const tag = tags?.map((tag: any) => (
+function Post({ title, date, summary, tags, _sys }: PostPreviews) {
+    const tag = tags?.map((tag: string) => (
         <span
             key={tag}
             className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
@@ -136,10 +131,7 @@ function Post({ title, date, summary, tags, _sys }: Post) {
 }
 
 export const getStaticProps = async () => {
-    const postsResponse = await client.queries.postConnection();
-    const posts = postsResponse.data.postConnection.edges?.map((post) => {
-        return post?.node;
-    });
+    const posts = await fetchPosts();
 
     return {
         props: {
