@@ -121,7 +121,7 @@ const Comment = ({
                 >
                     <span className="font-bold">Reply</span>
                 </button>
-                {isActive && <ReplyForm _id={postId} />}
+                {isActive && <ReplyForm _id={_id} postId={postId} />}
             </div>
             <hr className="mb-5 mt-5 border-black dark:border-white" />
             {renderChildren}

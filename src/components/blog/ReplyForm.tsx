@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { randomUUID } from "crypto";
 import def from "crypto";
 
-export const ReplyForm = ({ _id }: { _id: string }) => {
+export const ReplyForm = ({ _id, postId }: { _id: string; postId: string }) => {
     const { executeRecaptcha } = useGoogleReCaptcha();
 
     // Sets up basic data state
@@ -63,7 +63,12 @@ export const ReplyForm = ({ _id }: { _id: string }) => {
 
             await fetch("/api/createReply", {
                 method: "POST",
-                body: JSON.stringify({ ...data, token, parentId: _id }),
+                body: JSON.stringify({
+                    ...data,
+                    token,
+                    parentId: _id,
+                    postId: postId,
+                }),
             });
 
             setIsSubmitting(false);
