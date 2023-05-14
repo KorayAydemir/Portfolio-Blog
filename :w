@@ -67,7 +67,7 @@ export default function Post(props: InferGetStaticPropsType<typeof getStaticProp
                     </div>
 
                     <div className="mt-28">
-                        <Comments comments={props.comments} postId={_sys.filename} />
+                        <Comments comments={props.comments} />
                         <CommentForm _id={_sys.filename} />
                     </div>
                 </main>
@@ -94,31 +94,23 @@ export const getStaticProps = async (ctx: {params: {postSlug: string}} ) => {
     const postName = ctx.params.postSlug;
     const childrenQuery = `
     "children": children[@->.approved==true]->{
-       "children": children[@->.approved==true]->{
-           "children": children[@->.approved==true]->{
-               _id,                 
-               name,
-               _createdAt,
-               comment,                      
-               email,
-               type,
-            },   
-           _id,                 
-           name,
-           _createdAt,
-           comment,                      
-           email,
-           type,
-          },
-       _id,                 
+        "children": children[@->.approved==true]->{
+        children,   
+        _id,                 
        name,
-       _createdAt,
+       _updatedAt,
+       comment,                      
+       email,
+       type,
+    }   
+        _id,                 
+       name,
+       _updatedAt,
        comment,                      
        email,
        type,
     }`
-
-    const commentsQuery = `*[_type == "comment" && post == "${postName}" && approved == true && count(*[references(^._id)]) == 0]
+    const commentsQuery = `*[_type == "comment" && post == "${postName}" && approved == true]
     {
     ...,
     ${childrenQuery}
@@ -130,7 +122,7 @@ export const getStaticProps = async (ctx: {params: {postSlug: string}} ) => {
                 data,
                 query,
                 variables,
-                comments,
+            comments,
         },
     };
 };
