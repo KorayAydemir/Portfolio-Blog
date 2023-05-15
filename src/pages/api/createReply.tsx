@@ -35,15 +35,45 @@ export default async function createComment(
         const response = await verifyRecaptcha(token);
         if (response.success && response.score >= 0.5) {
             // mutate the comment childs
-            const createdComment = await writeClient.create({
-                _type: "comment",
-                post: postId,
-                name,
-                email,
-                comment,
-            });
+            // const createdComment = await writeClient.create({
+            //     _type: "comment",
+            //     post: postId,
+            //     name,
+            //     email,
+            //     comment,
+            // });
+
+            // const mutations = [
+            //     {
+            //         patch: {
+            //             id: parentId,
+            //             insert: {
+            //                 after: "children[-1]",
+            //                 items: [
+            //                     {
+            //                         _type: "reference",
+            //                         _ref: createdComment._id,
+            //                         _key: createdComment._id,
+            //                     },
+            //                 ],
+            //             },
+            //         },
+            //     },
+            // ];
+
+            const randomId = crypto.randomBytes(20).toString("hex");
 
             const mutations = [
+                {
+                    create: {
+                        _id: randomId,
+                        _type: "comment",
+                        post: postId,
+                        name,
+                        email,
+                        comment,
+                    },
+                },
                 {
                     patch: {
                         id: parentId,
@@ -52,8 +82,8 @@ export default async function createComment(
                             items: [
                                 {
                                     _type: "reference",
-                                    _ref: createdComment._id,
-                                    _key: createdComment._id,
+                                    _ref: randomId,
+                                    _key: randomId,
                                 },
                             ],
                         },

@@ -26,8 +26,6 @@ export default async function handler(
         const {
             body: { _type, email, post },
         } = req;
-        console.log(req.body);
-        console.log(req.headers);
 
         switch (_type) {
             case "comment":
@@ -39,6 +37,6 @@ export default async function handler(
 
         return res.json({ message: "No managed type: " + _type });
     } catch (err) {
-        return res.status(500).send({ message: "Error revalidating: " + err });
+        return res.status(200).send({ message: "Error revalidating: " + err });
     }
 }
