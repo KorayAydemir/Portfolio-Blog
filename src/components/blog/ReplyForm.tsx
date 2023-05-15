@@ -102,6 +102,7 @@ export const ReplyForm = ({ _id, postId }: { _id: string; postId: string }) => {
                 // Should use role="alert" to announce the error messages.
             }
             <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
+                {/*this hidden field is unnecessary rn, but keeping it in case it helps recaptcha detecting spam*/}
                 <input
                     {...register("register")}
                     type="hidden"

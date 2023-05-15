@@ -24,6 +24,7 @@ export const Comments = ({
     postId: string;
 }) => {
     const [activeReplyId, setActiveReplyId] = useState<string | null>(null);
+    console.log(postId);
     const toggleReplyForm = (commentId: string) => {
         setActiveReplyId(commentId === activeReplyId ? null : commentId);
     };
@@ -88,7 +89,7 @@ const Comment = ({
             {_children.map((c: any) => (
                 <Comment
                     postId={postId}
-                    key={c.id}
+                    key={c._id}
                     _children={c.children}
                     _id={c._id}
                     _createdAt={c._createdAt}

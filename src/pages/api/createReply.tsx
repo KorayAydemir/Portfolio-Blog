@@ -27,12 +27,9 @@ export default async function createComment(
     res: NextApiResponse
 ) {
     // Destructure the pieces of our request
-    const { register, name, email, comment, token, parentId } = JSON.parse(
+    const { postId, name, email, comment, token, parentId } = JSON.parse(
         req.body
     );
-
-    const randomId = crypto.randomBytes(20).toString("hex");
-    console.log(randomId);
 
     try {
         const response = await verifyRecaptcha(token);
@@ -40,7 +37,7 @@ export default async function createComment(
             // mutate the comment childs
             const createdComment = await writeClient.create({
                 _type: "comment",
-                post: register,
+                post: postId,
                 name,
                 email,
                 comment,

@@ -27,6 +27,7 @@ export default async function handler(
             body: { _type, email, post },
         } = req;
         console.log(req.body);
+        console.log(req.headers);
 
         switch (_type) {
             case "comment":
