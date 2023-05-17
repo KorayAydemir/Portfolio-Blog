@@ -52,7 +52,7 @@ export default async function createComment(
                     patch: {
                         id: parentId,
                         insert: {
-                            after: "replies[-1]",
+                            before: "replies[0]",
                             items: [
                                 {
                                     _type: "reference",
