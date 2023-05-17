@@ -45,12 +45,17 @@ export default async function createComment(
                         name,
                         email,
                         comment,
-                        replies: [],
                     },
                 },
                 {
                     patch: {
-                        id: parentId,
+                        query: `*[_id == ${parentId} || _id == drafts.${parentId}]`,
+                        setIfMissing: { replies: [] },
+                    },
+                },
+                {
+                    patch: {
+                        query: `*[_id == "${parentId}" || _id == "drafts.${parentId}"]`,
                         insert: {
                             before: "replies[0]",
                             items: [
