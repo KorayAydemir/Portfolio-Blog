@@ -34,33 +34,6 @@ export default async function createComment(
     try {
         const response = await verifyRecaptcha(token);
         if (response.success && response.score >= 0.5) {
-            // mutate the comment childs
-            // const createdComment = await writeClient.create({
-            //     _type: "comment",
-            //     post: postId,
-            //     name,
-            //     email,
-            //     comment,
-            // });
-
-            // const mutations = [
-            //     {
-            //         patch: {
-            //             id: parentId,
-            //             insert: {
-            //                 after: "children[-1]",
-            //                 items: [
-            //                     {
-            //                         _type: "reference",
-            //                         _ref: createdComment._id,
-            //                         _key: createdComment._id,
-            //                     },
-            //                 ],
-            //             },
-            //         },
-            //     },
-            // ];
-
             const randomId = crypto.randomBytes(20).toString("hex");
 
             const mutations = [
@@ -72,18 +45,20 @@ export default async function createComment(
                         name,
                         email,
                         comment,
+                        replies: [],
                     },
                 },
                 {
                     patch: {
                         id: parentId,
                         insert: {
-                            after: "children[-1]",
+                            after: "replies[-1]",
                             items: [
                                 {
                                     _type: "reference",
                                     _ref: randomId,
                                     _key: randomId,
+                                    _weak: true,
                                 },
                             ],
                         },
@@ -91,7 +66,8 @@ export default async function createComment(
                 },
             ];
 
-            await writeClient.mutate(mutations);
+            const response = await writeClient.mutate(mutations);
+            console.log(response);
 
             return res.status(200).json({ message: "Comment submitted" });
         } else {

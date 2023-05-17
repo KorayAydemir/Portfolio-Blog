@@ -36,6 +36,7 @@ export default async function createComment(
                 name,
                 email,
                 comment,
+                replies: [],
             });
 
             return res.status(200).json({ message: "Comment submitted" });

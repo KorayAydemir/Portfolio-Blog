@@ -92,10 +92,10 @@ export const getStaticProps = async (ctx: {params: {postSlug: string}} ) => {
     });
 
     const postName = ctx.params.postSlug;
-    const childrenQuery = `
-    "children": children[@->.approved==true]->{
-       "children": children[@->.approved==true]->{
-           "children": children[@->.approved==true]->{
+    const repliesQuery = `
+    "replies": replies[@->.approved==true]->{
+       "replies": replies[@->.approved==true]->{
+           "replies": replies[@->.approved==true]->{
                _id,                 
                name,
                _createdAt,
@@ -121,7 +121,7 @@ export const getStaticProps = async (ctx: {params: {postSlug: string}} ) => {
     const commentsQuery = `*[_type == "comment" && post == "${postName}" && approved == true && count(*[references(^._id)]) == 0]
     {
     ...,
-    ${childrenQuery}
+    ${repliesQuery}
 }`;
     const comments = await sanityClient.fetch(commentsQuery);
 

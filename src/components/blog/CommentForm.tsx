@@ -70,7 +70,7 @@ export const CommentForm = ({ _id }: any) => {
     };
 
     const recaptchaText = (
-        <div className="text-gray-500 text-sm mb-5">
+        <div className="mb-5 text-sm text-gray-500">
             This site is protected by reCAPTCHA and the Google
             <a href="https://policies.google.com/privacy">
                 {" "}
@@ -100,7 +100,7 @@ export const CommentForm = ({ _id }: any) => {
                     value={_id}
                 />
 
-                <div className="block mb-5">
+                <div className="mb-5 block">
                     <label
                         htmlFor="name"
                         className="text-gray-700 dark:text-gray-300"
@@ -127,7 +127,7 @@ export const CommentForm = ({ _id }: any) => {
                     )}
                 </div>
 
-                <div className="block mb-5">
+                <div className="mb-5 block">
                     <label
                         htmlFor="email"
                         className="text-gray-700 dark:text-gray-300"
@@ -168,7 +168,7 @@ export const CommentForm = ({ _id }: any) => {
                     )}
                 </div>
 
-                <div className="block mb-2">
+                <div className="mb-2 block">
                     <label
                         htmlFor="comment"
                         className="text-gray-700 dark:text-gray-300"
@@ -202,7 +202,7 @@ export const CommentForm = ({ _id }: any) => {
                 <input
                     value="Submit Comment"
                     type="submit"
-                    className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    className="focus:shadow-outline rounded bg-purple-500 px-4 py-2 font-bold text-white shadow hover:bg-purple-400 focus:outline-none"
                 />
             </form>
         </>
