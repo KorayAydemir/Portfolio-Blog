@@ -17,6 +17,7 @@ export default function Post(props: InferGetStaticPropsType<typeof getStaticProp
         variables: props.variables,
         data: props.data,
     });
+    console.log(props)
 
     const {summary, title, date, body, _sys} = data.posts
 
@@ -118,7 +119,10 @@ export const getStaticProps = async (ctx: {params: {postSlug: string}} ) => {
        type,
     }`
 
-    const commentsQuery = `*[_type == "comment" && post == "${postName}" && approved == true && count(*[references(^._id)]) == 0]
+// this previous query was pulling every comment that had more than 0 references
+// const commentsQuery = `*[_type == "comment" && post == "${postName}" && approved == true && count(*[references(^._id)]) == 0]
+
+    const commentsQuery = `*[_type == "comment" && post == "${postName}" && approved == true && !defined(parent)]
     {
     ...,
     ${repliesQuery}
