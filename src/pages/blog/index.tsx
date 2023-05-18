@@ -20,14 +20,30 @@ export default function Blog({ posts }: { posts: PostPreviews[] }) {
                     content="width=device-width, initial-scale=1"
                 />
                 <link rel="icon" href="/favicon.ico" />
+
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:creator" content="@Korayzzzzz" />
+                <meta property="og:title" content="Blog Posts" />
+                <meta
+                    property="og:description"
+                    content="Most recent posts about technology."
+                />
+                <meta
+                    property="og:url"
+                    content={`https://korayaydemir.dev/blog`}
+                />
+                <meta
+                    property="og:image"
+                    content="https://m.media-amazon.com/images/M/MV5BMTQ5MzkzNTIyN15BMl5BanBnXkFtZTYwNzUzOTA2._V1_FMjpg_UX1000_.jpg"
+                />
             </Head>
 
             <WideLayout>
-                <div className="flex justify-end mt-4 mr-4">
+                <div className="mr-4 mt-4 flex justify-end">
                     <ToggleTheme />
                 </div>
-                <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-                    <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+                <div className="space-y-2 pb-8 pt-6 md:space-y-5">
+                    <h1 className="md:leading-14 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl">
                         Latest
                     </h1>
                     <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
@@ -70,7 +86,7 @@ function Post({ title, date, summary, tags, _sys }: PostPreviews) {
     const tag = tags?.map((tag: string) => (
         <span
             key={tag}
-            className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 mr-3 text-sm font-medium uppercase"
         >
             {tag}
         </span>

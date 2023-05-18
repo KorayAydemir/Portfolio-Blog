@@ -24,13 +24,23 @@ export default function Post(props: InferGetStaticPropsType<typeof getStaticProp
     return (
         <>
             <Head>
-                <title>Blog - Koray Aydemir</title>
+                <title>Blog - {title}</title>
                 <meta name="description" content={summary} />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
                 <link rel="icon" href="/favicon.ico" />
+
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:creator" content="@Korayzzzzz" />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={summary} />
+                <meta property="og:url" content={`https://korayaydemir.dev/blog/${_sys.filename}`}/>
+                <meta
+                    property="og:image"
+                    content="https://m.media-amazon.com/images/M/MV5BMTQ5MzkzNTIyN15BMl5BanBnXkFtZTYwNzUzOTA2._V1_FMjpg_UX1000_.jpg"
+                />
             </Head>
 
             <WideLayout>
