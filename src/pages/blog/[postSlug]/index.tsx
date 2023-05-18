@@ -56,7 +56,7 @@ export default function Post(props: InferGetStaticPropsType<typeof getStaticProp
                                         <dt className="sr-only">
                                             Published on
                                         </dt>
-                                        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                                        <dd className="text-base font-medium leading-6 text-gray-900 dark:text-gray-400">
                                             <time dateTime="2021-08-07T15:32:14.000Z">
                                                 {date?.split("T")[0]}
                                             </time>
