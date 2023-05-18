@@ -48,7 +48,6 @@ export default async function createComment(
                         parent: {
                             _type: "reference",
                             _ref: parentId,
-                            _weak: true,
                         },
                     },
                 },
