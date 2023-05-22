@@ -17,7 +17,6 @@ export default function Post(props: InferGetStaticPropsType<typeof getStaticProp
         variables: props.variables,
         data: props.data,
     });
-    console.log(props)
 
     const {summary, title, date, body, _sys} = data.posts
 
@@ -103,6 +102,7 @@ export const getStaticProps = async (ctx: {params: {postSlug: string}} ) => {
     });
 
     const postName = ctx.params.postSlug;
+
     const repliesQuery = `
     "replies": replies[@->.approved==true]->{
        "replies": replies[@->.approved==true]->{
@@ -128,6 +128,7 @@ export const getStaticProps = async (ctx: {params: {postSlug: string}} ) => {
        email,
        type,
     }`
+
 
 // this previous query was pulling every comment that had more than 0 references
 // const commentsQuery = `*[_type == "comment" && post == "${postName}" && approved == true && count(*[references(^._id)]) == 0]
