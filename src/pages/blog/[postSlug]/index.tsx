@@ -43,9 +43,7 @@ export default function Post(props: InferGetStaticPropsType<typeof getStaticProp
             </Head>
 
             <WideLayout>
-                <div className="flex justify-end mr-4 mt-5">
-                    <ToggleTheme />
-                </div>
+                <ToggleTheme />
                 <main className="mb-auto">
                     <div className="mx-auto max-w-3x1 px-4 sm:px-6 xl:max-w-5xl xl:px-0">
                         <header>

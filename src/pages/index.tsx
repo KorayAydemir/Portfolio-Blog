@@ -51,9 +51,7 @@ export default function Home({ posts }: { posts: Posts[] }) {
                 />
             </Head>
 
-            <div className="flex justify-end mt-4 mr-4">
-                <ToggleTheme />
-            </div>
+            <ToggleTheme />
 
             <Layout>
                 <IntroText desc={desc} />
@@ -65,8 +63,8 @@ export default function Home({ posts }: { posts: Posts[] }) {
                     <MyProjects />
                 </section>
 
-                <section className="space-y-6 mt-8">
-                    <h2 className=" text-xl font-bold text-center">Skills</h2>
+                <section className="mt-8 space-y-6">
+                    <h2 className=" text-center text-xl font-bold">Skills</h2>
                     <Skill
                         fields={[
                             {
@@ -108,7 +106,7 @@ export default function Home({ posts }: { posts: Posts[] }) {
                         ]}
                     />
 
-                    <h2 className="mt-4 text-xl font-bold text-center">
+                    <h2 className="mt-4 text-center text-xl font-bold">
                         Tools
                     </h2>
                     <Skill

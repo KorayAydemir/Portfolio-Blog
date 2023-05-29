@@ -23,7 +23,7 @@ export default function ToggleTheme() {
 
     const Checkbox = (
         <label
-            className="relative inline-block h-6 min-h-[24px] w-14"
+            className="min-h-4 relative inline-block h-6 w-14"
             htmlFor="checkbox"
         >
             <input
@@ -41,10 +41,12 @@ export default function ToggleTheme() {
     );
 
     return (
-        <div className="flex flex-row items-center gap-1">
-            <span>☀️</span>
-            {Checkbox}
-            <span>🌒</span>
+        <div className="mr-4 flex min-h-[40px] justify-end pt-4">
+            <div className="flex flex-row items-center gap-1">
+                <span>☀️</span>
+                {Checkbox}
+                <span>🌒</span>
+            </div>
         </div>
     );
 }
