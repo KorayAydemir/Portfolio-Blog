@@ -13,7 +13,7 @@ export const LatestPosts = ({ posts }: { posts: Posts[] }) => {
                         <span className="mr-8 text-lg">
                             {posts[i].date?.split("T")[0]}
                         </span>
-                        <span className="font-bold text-lg">
+                        <span className="text-lg font-bold">
                             {posts[i].title}
                         </span>
                     </div>
@@ -27,7 +27,7 @@ export const LatestPosts = ({ posts }: { posts: Posts[] }) => {
 
     return (
         <>
-            <h2 className="min-h-full font-bold text-2xl">
+            <h2 className="min-h-[32px] text-2xl font-bold">
                 <Typewriter
                     onInit={(typewriter) => {
                         typewriter

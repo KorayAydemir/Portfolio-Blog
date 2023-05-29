@@ -8,7 +8,7 @@ export const IntroText = ({ desc }: { desc: string }) => {
     return (
         <>
             <noscript>
-                <h1 className="text-center font-bold text-2xl">
+                <h1 className="text-center text-2xl font-bold">
                     {h1}
                     {h1p2}
                 </h1>
@@ -20,8 +20,8 @@ export const IntroText = ({ desc }: { desc: string }) => {
                 <Contact />
             </noscript>
 
-            <section className="min-h-[160px]">
-                <h1 className="text-center font-bold text-2xl">
+            <section className="min-h-[175px] sm:min-h-[120px]">
+                <h1 className="min-h-[48px] text-center text-2xl font-bold">
                     <Typewriter
                         onInit={(typewriter) => {
                             typewriter
@@ -39,7 +39,7 @@ export const IntroText = ({ desc }: { desc: string }) => {
                     />
                 </h1>
 
-                <h2 className="mt-4 text-center text-xl h-20 mb-4">
+                <h2 className="h-20 text-center text-xl">
                     <Typewriter
                         onInit={(typewriter) => {
                             typewriter.changeDelay(1).typeString(desc).start();

@@ -16,7 +16,7 @@ import { FcLikePlaceholder } from "react-icons/fc";
 export default function MyProjects() {
     return (
         <>
-            <h3 className="mb-4 text-xl font-bold ">
+            <h3 className="mb-4 min-h-[28px] text-xl font-bold">
                 <Typewriter
                     onInit={(typewriter) => {
                         typewriter

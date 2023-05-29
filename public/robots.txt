@@ -1,8 +1,14 @@
+# *
 User-agent: *
-Disallow: /admin/
-Disallow: /api/
+Disallow: /api/*
+Disallow: /admin/*
 
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://korayaydemir.dev
+
+# Sitemaps
 Sitemap: https://korayaydemir.dev/sitemap.xml
