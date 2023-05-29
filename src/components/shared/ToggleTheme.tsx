@@ -22,7 +22,10 @@ export default function ToggleTheme() {
     };
 
     const Checkbox = (
-        <label className="relative inline-block h-6 w-14" htmlFor="checkbox">
+        <label
+            className="relative inline-block h-6 min-h-[24px] w-14"
+            htmlFor="checkbox"
+        >
             <input
                 type="checkbox"
                 id="checkbox"
@@ -31,8 +34,8 @@ export default function ToggleTheme() {
                 className="peer hidden checked:translate-x-6"
             />
             <div
-                className="peer-checked:bg-zinc-700 peer-checked:before:translate-x-6 bg-[#ccc] absolute cursor-pointer inset-0 transition rounded-3xl
-        before:bottom-0 before:content-[''] before:h-6 before:left-1 before:absolute before:transition before:w-6 before:bg-white dark:before:bg-zinc-900 before:rounded-[50%]"
+                className="absolute inset-0 cursor-pointer rounded-3xl bg-[#ccc] transition before:absolute before:bottom-0
+        before:left-1 before:h-6 before:w-6 before:rounded-[50%] before:bg-white before:transition before:content-[''] peer-checked:bg-zinc-700 peer-checked:before:translate-x-6 dark:before:bg-zinc-900"
             ></div>
         </label>
     );
